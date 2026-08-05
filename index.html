@@ -32,7 +32,26 @@
     font-size:clamp(46px,11vw,86px);
     letter-spacing:.30em;
     padding-left:.30em;
-    line-height:1;
+    line-height:1.25;
+  }
+  /* The macron is drawn in CSS rather than typed as a character,
+     so it stays centred over the O in every font and browser. */
+  .o{
+    position:relative;
+    display:inline-block;
+    letter-spacing:0;      /* keeps the box the width of the glyph itself */
+    margin-right:.30em;    /* re-adds the spacing we just removed */
+  }
+  .o::after{
+    content:'';
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    top:-.16em;
+    width:.42em;
+    height:.045em;
+    min-height:1px;
+    background:currentColor;
   }
   .tagline{
     margin-top:30px;
@@ -74,7 +93,7 @@
 </head>
 <body>
   <main>
-    <h1 class="mark">FLŌR</h1>
+    <h1 class="mark" aria-label="FLOR">FL<span class="o" aria-hidden="true">O</span>R</h1>
     <p class="tagline">Nature, elevated.</p>
     <div class="rule"></div>
     <p class="soon">Coming soon</p>
