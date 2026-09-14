@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FLŌR — Water Lily Seed Puffs</title>
-<meta name="description" content="FLŌR is about food, experienced. We discover foods from around the world and bring them to new tables. Starting with water lily seed puffs from India.">
+<meta name="description" content="FLŌR is about food, experienced. We discover foods and snacks from different parts of the world and bring them to new tables.">
 <meta property="og:title" content="FLŌR — Water Lily Seed Puffs">
-<meta property="og:description" content="Food, experienced. Water lily seed puffs from India — Classic Salt, Peri Peri, Cocoa.">
+<meta property="og:description" content="Food, experienced. Classic Salt, Peri Peri, Cocoa.">
 <meta property="og:image" content="images/pack-peri-peri.png">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#FAF6EC">
@@ -23,6 +23,7 @@
   --cream:#EFE7D7;
   --cream-deep:#E4DBC9;   /* pack cream */
   --navy:#1F4368;
+  --navy-deep:#15304A;
   --terra:#B94A36;
   --burg:#6B2938;
   --line:rgba(82,47,25,.16);
@@ -55,6 +56,19 @@ em{font-style:italic}
 .eyebrow{
   font-size:11px;letter-spacing:.3em;text-transform:uppercase;
   font-weight:400;color:var(--ink);opacity:.55;display:block;
+}
+
+/* ---- FLŌR wordmark ----
+   The macron is DRAWN, not typed. Web fonts don't all carry the Ō glyph, and
+   where they don't the browser borrows it from another font — which letter-spacing
+   then shoves sideways off the O. The script at the bottom of this file swaps every
+   typed Ō for <span class="mcr">O</span>, so you can still just type FLŌR normally. */
+.mcr{position:relative;display:inline-block;line-height:1;letter-spacing:0}
+.mcr::after{
+  content:'';position:absolute;left:50%;transform:translateX(-50%);
+  top:var(--mcr-top,.05em);
+  width:var(--mcr-w,.44em);height:.055em;min-height:1px;
+  background:currentColor;
 }
 
 /* ---------------- nav ---------------- */
@@ -139,7 +153,6 @@ header.stuck .nav-logo img{width:76px}
   margin-top:34px;font-family:var(--display);font-size:clamp(23px,3.6vw,36px);
   color:var(--ink);font-weight:300;letter-spacing:.005em;
 }
-.hero-sub{margin:20px auto 0;max-width:40ch;color:var(--soft);font-size:16.5px}
 .hero-botanic{
   position:absolute;top:50%;transform:translateY(-50%);
   width:clamp(120px,17vw,230px);opacity:.15;pointer-events:none;user-select:none;
@@ -221,11 +234,16 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
   border-radius:100px;padding:11px 28px;
   font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);opacity:.75;
 }
-.mailto{
-  display:inline-block;margin-top:26px;font-size:16px;color:var(--ink);
-  border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .3s ease,color .3s ease;
+.preorder{
+  margin:32px auto 0;max-width:34ch;
+  font-family:var(--display);font-size:clamp(20px,2.6vw,25px);
+  color:var(--ink);line-height:1.5;
 }
-.mailto:hover{color:var(--terra);border-bottom-color:var(--terra)}
+.preorder a{
+  white-space:nowrap;border-bottom:1px solid var(--line);padding-bottom:2px;
+  transition:color .3s ease,border-color .3s ease;
+}
+.preorder a:hover{color:var(--terra);border-bottom-color:var(--terra)}
 
 /* ---------------- sustainability ---------------- */
 .sus-block{padding-top:44px;margin-top:44px;border-top:1px solid var(--line-soft)}
@@ -245,8 +263,18 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
 }
 
 /* ---------------- about ---------------- */
-.founders{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,64px);margin-top:48px}
-@media(max-width:760px){.founders{grid-template-columns:1fr;gap:34px}}
+.team{
+  display:grid;grid-template-columns:.92fr 1.08fr;
+  gap:clamp(30px,5vw,68px);align-items:center;margin-top:54px;
+}
+@media(max-width:820px){.team{grid-template-columns:1fr;gap:30px}}
+.team-photo img{
+  width:min(420px,100%);margin:0 auto;
+  /* soft fade so the cut-out doesn't end on a hard edge against the cream */
+  -webkit-mask-image:linear-gradient(to bottom,#000 76%,transparent 99%);
+  mask-image:linear-gradient(to bottom,#000 76%,transparent 99%);
+}
+.team-bios .founder + .founder{margin-top:30px}
 .founder{border-top:1px solid var(--line);padding-top:26px}
 .founder h3{font-size:26px;margin-bottom:10px}
 .founder p{font-size:15.5px;color:var(--soft)}
@@ -257,6 +285,9 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
 
 /* ---------------- footer ---------------- */
 footer{background:var(--ink);color:var(--cream-deep);padding:72px 0 54px}
+/* p has a 64ch max-width globally; without this the footer's centred text
+   sits in a narrow left-hugging box instead of across the full width */
+footer p{max-width:none}
 footer .flogo{width:132px;margin:0 auto;opacity:.95;filter:brightness(0) invert(1) opacity(.92)}
 .foot-tag{margin-top:20px;text-align:center;font-family:var(--display);font-size:20px;color:var(--cream-deep);opacity:.9}
 .foot-links{
@@ -268,6 +299,48 @@ footer .flogo{width:132px;margin:0 auto;opacity:.95;filter:brightness(0) invert(
 .foot-legal{
   margin-top:42px;text-align:center;font-size:12px;opacity:.5;letter-spacing:.04em;
 }
+
+/* ================= COLOUR ACCENTS =================
+   All three colours are sampled from the packs: Classic Salt navy,
+   Peri Peri terracotta, Cocoa burgundy. Used sparingly so the cream
+   still carries the page. Tweak or delete any block below freely. */
+
+/* section labels pick up the terracotta */
+.eyebrow{color:var(--terra);opacity:.9}
+
+/* flavour cards each sit on a wash of their own pack colour */
+.fl-salt  .shot{background:rgba(31,67,104,.055)}
+.fl-peri  .shot{background:rgba(185,74,54,.055)}
+.fl-cocoa .shot{background:rgba(107,41,56,.055)}
+.band .fl-salt  .shot{background:rgba(31,67,104,.05)}
+.band .fl-peri  .shot{background:rgba(185,74,54,.05)}
+.band .fl-cocoa .shot{background:rgba(107,41,56,.05)}
+.fl-salt  h3{color:var(--navy)}
+.fl-peri  h3{color:var(--terra)}
+.fl-cocoa h3{color:var(--burg)}
+
+/* table columns carry the same three colours */
+thead th:nth-child(2){color:var(--navy)}
+thead th:nth-child(3){color:var(--terra)}
+thead th:nth-child(4){color:var(--burg)}
+
+/* sustainability + about accents */
+.journey li::before{background:var(--terra);opacity:.8;width:14px}
+.closing{color:var(--burg)}
+.pull{color:var(--terra)}
+
+/* ---- the Shop goes dark: the one commercial moment on the page,
+        and the pouches read far better against a deep ground ---- */
+#shop{background:var(--navy-deep);color:var(--cream-deep)}
+#shop .eyebrow{color:#C9A899;opacity:1}
+#shop h2{color:#F3ECDE}
+#shop .shop-shelf img{filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
+#shop .badge{
+  border-color:rgba(243,236,222,.32);color:#F3ECDE;opacity:.95;
+}
+#shop .preorder{color:#F3ECDE}
+#shop .preorder a{border-bottom-color:rgba(243,236,222,.45)}
+#shop .preorder a:hover{color:#E29C84;border-bottom-color:#E29C84}
 
 /* ---------------- reveal ---------------- */
 .rv{opacity:0;transform:translateY(24px);transition:opacity 1s cubic-bezier(.2,.7,.3,1),transform 1s cubic-bezier(.2,.7,.3,1)}
@@ -289,7 +362,7 @@ footer .flogo{width:132px;margin:0 auto;opacity:.95;filter:brightness(0) invert(
       <a href="#puffs">The Puffs</a>
       <a href="#shop">Shop</a>
       <a href="#sustainability">Sustainability</a>
-      <a href="#about">About</a>
+      <a href="#about">About Us</a>
     </div>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
       <span></span><span></span><span></span>
@@ -302,7 +375,7 @@ footer .flogo{width:132px;margin:0 auto;opacity:.95;filter:brightness(0) invert(
   <a href="#puffs">The Puffs</a>
   <a href="#shop">Shop</a>
   <a href="#sustainability">Sustainability</a>
-  <a href="#about">About</a>
+  <a href="#about">About Us</a>
   <a class="mail" href="mailto:hello@florpuffs.com">hello@florpuffs.com</a>
 </div>
 
@@ -316,7 +389,6 @@ footer .flogo{width:132px;margin:0 auto;opacity:.95;filter:brightness(0) invert(
     <img class="hero-botanic r" src="images/lotus-right.png" alt="" aria-hidden="true">
     <img class="hero-logo" src="images/logo.png" alt="FLŌR">
     <p class="hero-tag">Food, experienced.</p>
-    <p class="hero-sub">Water lily seed puffs from India. Light, crisp and quietly unexpected.</p>
     <span class="scroll-cue">Scroll</span>
   </section>
 
@@ -407,7 +479,7 @@ footer .flogo{width:132px;margin:0 auto;opacity:.95;filter:brightness(0) invert(
           </tbody>
         </table>
       </div>
-      <p class="table-note rv">30 g pouch. Crisp by craft.</p>
+      <p class="table-note rv">30 g and 11 g pouches. Crisp by craft.</p>
     </div>
   </section>
 
@@ -416,19 +488,19 @@ footer .flogo{width:132px;margin:0 auto;opacity:.95;filter:brightness(0) invert(
     <div class="wrap center">
       <div class="sec-head">
         <span class="eyebrow">The Shop</span>
-        <h2 class="rv">Not quite yet.</h2>
+        <h2 class="rv">Available soon.</h2>
       </div>
       <div class="shop-shelf rv">
-        <img src="images/pack-classic-salt.png" alt="FLŌR Classic Salt, 30 g">
-        <img src="images/pack-peri-peri.png" alt="FLŌR Peri Peri, 30 g">
-        <img src="images/pack-cocoa.png" alt="FLŌR Cocoa, 30 g">
+        <img src="images/pack-classic-salt.png" alt="FLŌR Classic Salt">
+        <img src="images/pack-peri-peri.png" alt="FLŌR Peri Peri">
+        <img src="images/pack-cocoa.png" alt="FLŌR Cocoa">
       </div>
       <div class="rv">
-        <span class="badge">Coming soon</span>
-        <p style="margin:26px auto 0;color:var(--soft);max-width:44ch">
-          We're getting the first pouches ready. If you'd like to stock FLŌR, or simply want to know when the shop opens, write to us.
+        <span class="badge">30 g &amp; 11 g pouches</span>
+        <p class="preorder">
+          Pre-order the Discovery Box by writing to
+          <a href="mailto:hello@florpuffs.com?subject=Discovery%20Box%20pre-order">hello@florpuffs.com</a>
         </p>
-        <a class="mailto" href="mailto:hello@florpuffs.com">hello@florpuffs.com</a>
       </div>
     </div>
   </section>
@@ -499,14 +571,19 @@ footer .flogo{width:132px;margin:0 auto;opacity:.95;filter:brightness(0) invert(
         </div>
       </div>
 
-      <div class="founders">
-        <div class="founder rv">
-          <h3>Shourya</h3>
-          <p>Eight years at Heineken in FMCG, after studying at Rotterdam School of Management and London Business School.</p>
+      <div class="team">
+        <div class="team-photo rv">
+          <img src="images/founders.png" alt="Shourya and Nienke, the founders of FLŌR">
         </div>
-        <div class="founder rv">
-          <h3>Nienke</h3>
-          <p>More than ten years in the flower business, working across sales and packaging, after studying at Rotterdam School of Management.</p>
+        <div class="team-bios">
+          <div class="founder rv">
+            <h3>Shourya</h3>
+            <p>Eight years at Heineken in FMCG, after studying at Rotterdam School of Management and London Business School.</p>
+          </div>
+          <div class="founder rv">
+            <h3>Nienke</h3>
+            <p>More than ten years in the flower business, working across sales and packaging, after studying at Rotterdam School of Management.</p>
+          </div>
         </div>
       </div>
 
@@ -533,7 +610,7 @@ footer .flogo{width:132px;margin:0 auto;opacity:.95;filter:brightness(0) invert(
       <a href="#puffs">The Puffs</a>
       <a href="#shop">Shop</a>
       <a href="#sustainability">Sustainability</a>
-      <a href="#about">About</a>
+      <a href="#about">About Us</a>
       <a href="mailto:hello@florpuffs.com">hello@florpuffs.com</a>
     </div>
     <p class="foot-legal">© <span id="yr">2026</span> FLŌR · Amsterdam, The Netherlands</p>
@@ -541,6 +618,42 @@ footer .flogo{width:132px;margin:0 auto;opacity:.95;filter:brightness(0) invert(
 </footer>
 
 <script>
+  /* ---- FLŌR: draw the macron instead of trusting the font ----
+     Swaps every typed Ō for a span with a CSS-drawn bar. Keeps the HTML above
+     plainly editable — type FLŌR as normal and this handles the rendering.
+     Nudge --mcr-top below if the bar ever sits too high or low. */
+  (function () {
+    const SKIP = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT']);
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => (!SKIP.has(n.parentNode.nodeName) && n.nodeValue.includes('Ō'))
+        ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    for (const node of nodes) {
+      const parent = node.parentNode;
+      const cs = getComputedStyle(parent);
+      const serif = /Cormorant/i.test(cs.fontFamily);   // display face sits lower
+      const ls = cs.letterSpacing;
+      const frag = document.createDocumentFragment();
+
+      node.nodeValue.split('Ō').forEach((chunk, i) => {
+        if (i) {
+          const s = document.createElement('span');
+          s.className = 'mcr';
+          s.textContent = 'O';
+          s.style.setProperty('--mcr-top', serif ? '.13em' : '.05em');
+          // the span zeroes letter-spacing internally, so give the gap back
+          if (ls && ls !== 'normal' && parseFloat(ls)) s.style.marginRight = ls;
+          frag.appendChild(s);
+        }
+        if (chunk) frag.appendChild(document.createTextNode(chunk));
+      });
+      parent.replaceChild(frag, node);
+    }
+  })();
+
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   const hdr    = document.getElementById('hdr');
