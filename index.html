@@ -31,6 +31,16 @@
   --display:'Cormorant Garamond',Georgia,serif;
   --sans:'Jost',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   --max:1140px;
+
+  /* ---- the bar over the O in FLŌR ----
+     These four numbers are the ONLY place the macron is controlled.
+     Smaller --mcr-top = bar sits higher. Larger = bar sits lower.
+     --mcr-w is its width, --mcr-h its thickness. All relative to text size,
+     so they scale automatically from the nav to the big headings. */
+  --mcr-top-sans:-.04em;   /* body text + nav (Jost) */
+  --mcr-top-serif:.01em;   /* headings (Cormorant, shorter caps) */
+  --mcr-w:.48em;
+  --mcr-h:.06em;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -65,9 +75,13 @@ em{font-style:italic}
    typed Ō for <span class="mcr">O</span>, so you can still just type FLŌR normally. */
 .mcr{position:relative;display:inline-block;line-height:1;letter-spacing:0}
 .mcr::after{
-  content:'';position:absolute;left:50%;transform:translateX(-50%);
+  content:'';position:absolute;
+  /* centred with auto margins rather than translate — a half-pixel transform
+     at small sizes was enough to make the bar look off to one side */
+  left:0;right:0;margin-inline:auto;
   top:var(--mcr-top,.05em);
-  width:var(--mcr-w,.44em);height:.055em;min-height:1px;
+  width:var(--mcr-w,.46em);
+  height:var(--mcr-h,.06em);min-height:1px;
   background:currentColor;
 }
 
@@ -174,7 +188,10 @@ section{padding:clamp(80px,11vw,130px) 0;position:relative}
 .sec-head{margin-bottom:52px}
 .sec-head .eyebrow{margin-bottom:16px}
 .center{text-align:center}
-.center p{margin-left:auto;margin-right:auto}
+/* p has max-width:64ch globally. Without auto side margins that box hugs the
+   left edge, so the text looks centred inside an off-centre block. This covers
+   BOTH a .center wrapper and .center applied straight to the <p>. */
+.center p,p.center{margin-left:auto;margin-right:auto}
 .center .lead{margin-left:auto;margin-right:auto}
 
 .orn{display:block;width:112px;margin:0 auto 30px;opacity:.5}
@@ -263,18 +280,20 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
 }
 
 /* ---------------- about ---------------- */
-.team{
-  display:grid;grid-template-columns:.92fr 1.08fr;
-  gap:clamp(30px,5vw,68px);align-items:center;margin-top:54px;
-}
-@media(max-width:820px){.team{grid-template-columns:1fr;gap:30px}}
+/* founders: portrait centred, the two bios side by side beneath it —
+   symmetrical, to match the centred section heading above */
+.team-photo{margin-top:46px}
 .team-photo img{
-  width:min(420px,100%);margin:0 auto;
+  width:min(360px,78%);margin:0 auto;
   /* soft fade so the cut-out doesn't end on a hard edge against the cream */
-  -webkit-mask-image:linear-gradient(to bottom,#000 76%,transparent 99%);
-  mask-image:linear-gradient(to bottom,#000 76%,transparent 99%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);
 }
-.team-bios .founder + .founder{margin-top:30px}
+.team-bios{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(28px,5vw,60px);margin-top:14px;
+}
+@media(max-width:760px){.team-bios{grid-template-columns:1fr;gap:30px}}
 .founder{border-top:1px solid var(--line);padding-top:26px}
 .founder h3{font-size:26px;margin-bottom:10px}
 .founder p{font-size:15.5px;color:var(--soft)}
@@ -571,11 +590,10 @@ thead th:nth-child(4){color:var(--burg)}
         </div>
       </div>
 
-      <div class="team">
-        <div class="team-photo rv">
-          <img src="images/founders.png" alt="Shourya and Nienke, the founders of FLŌR">
-        </div>
-        <div class="team-bios">
+      <div class="team-photo rv">
+        <img src="images/founders.png" alt="Shourya and Nienke, the founders of FLŌR">
+      </div>
+      <div class="team-bios">
           <div class="founder rv">
             <h3>Shourya</h3>
             <p>Eight years at Heineken in FMCG, after studying at Rotterdam School of Management and London Business School.</p>
@@ -584,7 +602,6 @@ thead th:nth-child(4){color:var(--burg)}
             <h3>Nienke</h3>
             <p>More than ten years in the flower business, working across sales and packaging, after studying at Rotterdam School of Management.</p>
           </div>
-        </div>
       </div>
 
       <img class="rule-orn rv" src="images/divider.png" alt="" aria-hidden="true">
@@ -643,7 +660,9 @@ thead th:nth-child(4){color:var(--burg)}
           const s = document.createElement('span');
           s.className = 'mcr';
           s.textContent = 'O';
-          s.style.setProperty('--mcr-top', serif ? '.13em' : '.05em');
+          s.style.setProperty('--mcr-top',
+            getComputedStyle(document.documentElement)
+              .getPropertyValue(serif ? '--mcr-top-serif' : '--mcr-top-sans').trim());
           // the span zeroes letter-spacing internally, so give the gap back
           if (ls && ls !== 'normal' && parseFloat(ls)) s.style.marginRight = ls;
           frag.appendChild(s);
