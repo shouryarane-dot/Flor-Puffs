@@ -3,104 +3,596 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FLŌR</title>
-<meta name="description" content="FLŌR — Nature, elevated. Coming soon.">
-<meta property="og:title" content="FLŌR">
-<meta property="og:description" content="Nature, elevated. Coming soon.">
-<meta name="theme-color" content="#FAF6EF">
+<title>FLŌR — Water Lily Seed Puffs</title>
+<meta name="description" content="FLŌR is about food, experienced. We discover foods from around the world and bring them to new tables. Starting with water lily seed puffs from India.">
+<meta property="og:title" content="FLŌR — Water Lily Seed Puffs">
+<meta property="og:description" content="Food, experienced. Water lily seed puffs from India — Classic Salt, Peri Peri, Cocoa.">
+<meta property="og:image" content="images/pack-peri-peri.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FAF6EC">
+<link rel="icon" href="images/lotus-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Jost:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{
-    background:#FAF6EF;
-    color:#37302A;
-    font-family:'Jost',-apple-system,BlinkMacSystemFont,sans-serif;
-    font-weight:300;
-    min-height:100svh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:40px 28px;
-    text-align:center;
-    -webkit-font-smoothing:antialiased;
-  }
-  .mark{
-    font-family:'Fraunces',Georgia,serif;
-    font-weight:300;
-    font-size:clamp(46px,11vw,86px);
-    letter-spacing:.30em;
-    padding-left:.30em;
-    line-height:1.25;
-  }
-  /* The macron is drawn in CSS rather than typed as a character,
-     so it stays centred over the O in every font and browser. */
-  .o{
-    position:relative;
-    display:inline-block;
-    letter-spacing:0;      /* keeps the box the width of the glyph itself */
-    margin-right:.30em;    /* re-adds the spacing we just removed */
-  }
-  .o::after{
-    content:'';
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    top:-.16em;
-    width:.42em;
-    height:.045em;
-    min-height:1px;
-    background:currentColor;
-  }
-  .tagline{
-    margin-top:30px;
-    font-size:clamp(15px,2.4vw,19px);
-    letter-spacing:.05em;
-    color:#5C5148;
-  }
-  .rule{
-    width:40px;
-    height:1px;
-    background:#A98B5D;
-    margin:44px auto;
-  }
-  .soon{
-    font-size:11.5px;
-    letter-spacing:.30em;
-    text-transform:uppercase;
-    color:#A98B5D;
-  }
-  .contact{
-    margin-top:22px;
-    font-size:14.5px;
-    color:#5C5148;
-    line-height:1.9;
-  }
-  .contact a{
-    color:#37302A;
-    text-decoration:none;
-    border-bottom:1px solid rgba(55,48,42,.28);
-    padding-bottom:1px;
-    transition:border-color .3s ease,color .3s ease;
-  }
-  .contact a:hover{color:#B26545;border-bottom-color:#B26545}
+:root{
+  --ink:#522F19;          /* brand brown, sampled from the logo */
+  --body:#4A3E33;
+  --soft:#6E6054;
+  --bg:#FAF6EC;
+  --cream:#EFE7D7;
+  --cream-deep:#E4DBC9;   /* pack cream */
+  --navy:#1F4368;
+  --terra:#B94A36;
+  --burg:#6B2938;
+  --line:rgba(82,47,25,.16);
+  --line-soft:rgba(82,47,25,.09);
+  --display:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --max:1140px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--body);
+  font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+@media(max-width:600px){.wrap{padding:0 22px}}
 
-  main{animation:fade 1.5s cubic-bezier(.2,.7,.3,1) both}
-  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  @media(prefers-reduced-motion:reduce){main{animation:none}}
+h2,h3,.display{font-family:var(--display);font-weight:300;color:var(--ink);line-height:1.15}
+h2{font-size:clamp(30px,4.6vw,50px);letter-spacing:.005em}
+h3{font-size:24px;font-weight:400}
+p{max-width:64ch}
+p + p{margin-top:19px}
+.lead{font-size:clamp(20px,2.6vw,26px);font-family:var(--display);color:var(--ink);line-height:1.45;max-width:26ch}
+strong{font-weight:400;color:var(--ink)}
+em{font-style:italic}
+
+.eyebrow{
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  font-weight:400;color:var(--ink);opacity:.55;display:block;
+}
+
+/* ---------------- nav ---------------- */
+header{
+  position:fixed;inset:0 0 auto 0;z-index:80;
+  border-bottom:1px solid transparent;transition:background .45s ease,border-color .45s ease;
+}
+header.stuck{background:rgba(250,246,236,.93);backdrop-filter:blur(14px);border-bottom-color:var(--line-soft)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;
+  max-width:var(--max);margin:0 auto;padding:20px 32px;transition:padding .45s ease}
+header.stuck .nav{padding:13px 32px}
+.nav-logo img{width:92px;transition:width .45s ease}
+header.stuck .nav-logo img{width:76px}
+.nav-links{display:flex;gap:34px;font-size:11.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--ink)}
+.nav-links a{position:relative;padding-bottom:3px;opacity:.7;transition:opacity .3s ease}
+.nav-links a:hover{opacity:1}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--ink);transition:width .35s ease}
+.nav-links a:hover::after{width:100%}
+/* current section */
+.nav-links a.active{opacity:1}
+.nav-links a.active::after{width:100%;background:var(--terra)}
+
+/* hamburger */
+.burger{
+  display:none;background:none;border:0;cursor:pointer;padding:10px 4px;
+  width:40px;height:40px;position:relative;
+}
+.burger span{
+  display:block;width:24px;height:1.5px;background:var(--ink);margin:0 auto;
+  transition:transform .35s cubic-bezier(.2,.7,.3,1),opacity .25s ease;
+}
+.burger span + span{margin-top:6px}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* mobile drawer */
+.drawer{
+  display:none;position:fixed;inset:0;z-index:70;
+  background:var(--bg);
+  padding:104px 30px 40px;
+  opacity:0;visibility:hidden;transform:translateY(-12px);
+  transition:opacity .4s ease,transform .4s cubic-bezier(.2,.7,.3,1),visibility .4s;
+  overflow-y:auto;
+}
+.drawer.open{opacity:1;visibility:visible;transform:none}
+.drawer a{
+  display:block;font-family:var(--display);font-size:29px;color:var(--ink);
+  padding:17px 0;border-bottom:1px solid var(--line-soft);
+}
+.drawer a:last-of-type{border-bottom:none}
+.drawer .mail{
+  margin-top:30px;font-family:var(--sans);font-size:14px;letter-spacing:.06em;
+  color:var(--soft);border-bottom:none;padding:0;
+}
+@media(max-width:860px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .drawer{display:block}
+}
+
+/* back to top */
+.totop{
+  position:fixed;right:24px;bottom:24px;z-index:75;
+  width:46px;height:46px;border-radius:50%;border:1px solid var(--line);
+  background:rgba(250,246,236,.94);backdrop-filter:blur(10px);color:var(--ink);
+  cursor:pointer;display:grid;place-items:center;font-size:15px;line-height:1;
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .35s ease,transform .35s ease,visibility .35s,background .3s ease;
+}
+.totop.show{opacity:1;visibility:visible;transform:none}
+.totop:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+@media(max-width:600px){.totop{right:16px;bottom:16px;width:42px;height:42px}}
+
+/* ---------------- hero ---------------- */
+.hero{
+  min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:130px 24px 90px;position:relative;overflow:hidden;
+}
+.hero-logo{width:min(400px,72vw);margin:0 auto}
+.hero-tag{
+  margin-top:34px;font-family:var(--display);font-size:clamp(23px,3.6vw,36px);
+  color:var(--ink);font-weight:300;letter-spacing:.005em;
+}
+.hero-sub{margin:20px auto 0;max-width:40ch;color:var(--soft);font-size:16.5px}
+.hero-botanic{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:clamp(120px,17vw,230px);opacity:.15;pointer-events:none;user-select:none;
+}
+.hero-botanic.l{left:-2vw}
+.hero-botanic.r{right:-2vw}
+@media(max-width:860px){.hero-botanic{opacity:.09;width:130px}.hero-botanic.l{left:-40px}.hero-botanic.r{right:-40px}}
+.scroll-cue{
+  position:absolute;bottom:38px;left:50%;transform:translateX(-50%);
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);opacity:.4;
+}
+.scroll-cue::after{content:'';display:block;width:1px;height:34px;background:var(--ink);opacity:.4;margin:12px auto 0;
+  animation:cue 2.4s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%,100%{transform:scaleY(.4);opacity:.2}50%{transform:scaleY(1);opacity:.5}}
+
+/* ---------------- sections ---------------- */
+section{padding:clamp(80px,11vw,130px) 0;position:relative}
+.band{background:var(--cream)}
+.sec-head{margin-bottom:52px}
+.sec-head .eyebrow{margin-bottom:16px}
+.center{text-align:center}
+.center p{margin-left:auto;margin-right:auto}
+.center .lead{margin-left:auto;margin-right:auto}
+
+.orn{display:block;width:112px;margin:0 auto 30px;opacity:.5}
+.rule-orn{display:block;width:min(340px,70%);margin:60px auto;opacity:.4}
+
+.two{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,6vw,80px);align-items:start}
+@media(max-width:860px){.two{grid-template-columns:1fr;gap:30px}}
+
+/* ---------------- product ---------------- */
+.harvest{width:min(1000px,100%);margin:0 auto 10px;opacity:.9}
+.flavours{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);margin-top:20px}
+@media(max-width:860px){.flavours{grid-template-columns:1fr;max-width:380px;margin-inline:auto}}
+.fl{text-align:center}
+.fl .shot{
+  background:var(--bg);border-radius:3px;padding:26px 20px 18px;
+  transition:transform .5s cubic-bezier(.2,.7,.3,1);
+}
+.band .fl .shot{background:transparent}
+.fl:hover .shot{transform:translateY(-8px)}
+.fl img{margin:0 auto;width:min(230px,80%);filter:drop-shadow(0 26px 30px rgba(82,47,25,.16))}
+.fl h3{margin-top:22px;font-size:22px}
+.fl .desc{font-size:15.5px;color:var(--soft);margin-top:8px;max-width:30ch;margin-inline:auto}
+.fl .bar{width:34px;height:2px;margin:16px auto 0;border-radius:2px}
+.fl-salt .bar{background:var(--navy)}
+.fl-peri .bar{background:var(--terra)}
+.fl-cocoa .bar{background:var(--burg)}
+
+/* spec table */
+.table-scroll{overflow-x:auto;margin-top:64px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:15px}
+th,td{padding:15px 14px;text-align:center;border-bottom:1px solid var(--line-soft)}
+thead th{
+  font-family:var(--display);font-size:17px;font-weight:400;color:var(--ink);
+  border-bottom:1px solid var(--line);
+}
+tbody th{
+  text-align:left;font-weight:300;color:var(--body);font-family:var(--sans);
+  font-size:14.5px;letter-spacing:.02em;
+}
+td{color:var(--ink);font-size:16px}
+td.no{color:var(--soft);opacity:.5}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
+.table-note{margin-top:18px;font-size:13px;color:var(--soft);opacity:.85}
+
+/* ---------------- shop ---------------- */
+.shop-shelf{
+  display:flex;justify-content:center;align-items:flex-end;gap:clamp(8px,2.4vw,34px);
+  margin:10px auto 0;max-width:760px;
+}
+.shop-shelf img{
+  width:clamp(96px,20vw,200px);
+  filter:drop-shadow(0 30px 34px rgba(82,47,25,.18));
+}
+.shop-shelf img:nth-child(2){width:clamp(112px,23vw,228px)}
+.badge{
+  display:inline-block;margin-top:46px;border:1px solid var(--line);
+  border-radius:100px;padding:11px 28px;
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);opacity:.75;
+}
+.mailto{
+  display:inline-block;margin-top:26px;font-size:16px;color:var(--ink);
+  border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .3s ease,color .3s ease;
+}
+.mailto:hover{color:var(--terra);border-bottom-color:var(--terra)}
+
+/* ---------------- sustainability ---------------- */
+.sus-block{padding-top:44px;margin-top:44px;border-top:1px solid var(--line-soft)}
+.sus-block:first-of-type{border-top:none;margin-top:0;padding-top:0}
+.sus-block h3{margin-bottom:14px}
+.journey{
+  margin:34px 0 0;list-style:none;
+  font-family:var(--display);font-size:clamp(19px,2.4vw,24px);color:var(--ink);line-height:1.9;
+}
+.journey li{padding-left:26px;position:relative}
+.journey li::before{
+  content:'';position:absolute;left:0;top:.82em;width:11px;height:1px;background:var(--ink);opacity:.45;
+}
+.closing{
+  margin-top:56px;font-family:var(--display);font-size:clamp(21px,2.8vw,28px);
+  color:var(--ink);line-height:1.5;max-width:30ch;
+}
+
+/* ---------------- about ---------------- */
+.founders{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,64px);margin-top:48px}
+@media(max-width:760px){.founders{grid-template-columns:1fr;gap:34px}}
+.founder{border-top:1px solid var(--line);padding-top:26px}
+.founder h3{font-size:26px;margin-bottom:10px}
+.founder p{font-size:15.5px;color:var(--soft)}
+.pull{
+  font-family:var(--display);font-size:clamp(24px,3.4vw,34px);color:var(--ink);
+  line-height:1.4;margin:0 auto;max-width:22ch;text-align:center;
+}
+
+/* ---------------- footer ---------------- */
+footer{background:var(--ink);color:var(--cream-deep);padding:72px 0 54px}
+footer .flogo{width:132px;margin:0 auto;opacity:.95;filter:brightness(0) invert(1) opacity(.92)}
+.foot-tag{margin-top:20px;text-align:center;font-family:var(--display);font-size:20px;color:var(--cream-deep);opacity:.9}
+.foot-links{
+  margin-top:34px;display:flex;justify-content:center;flex-wrap:wrap;gap:14px 30px;
+  font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+}
+.foot-links a{opacity:.72;transition:opacity .3s ease}
+.foot-links a:hover{opacity:1}
+.foot-legal{
+  margin-top:42px;text-align:center;font-size:12px;opacity:.5;letter-spacing:.04em;
+}
+
+/* ---------------- reveal ---------------- */
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1s cubic-bezier(.2,.7,.3,1),transform 1s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+  .scroll-cue::after{animation:none}
+}
 </style>
 </head>
 <body>
-  <main>
-    <h1 class="mark" aria-label="FLOR">FL<span class="o" aria-hidden="true">O</span>R</h1>
-    <p class="tagline">Nature, elevated.</p>
-    <div class="rule"></div>
-    <p class="soon">Coming soon</p>
-    <p class="contact">
-      For any questions,<br>
+
+<header id="hdr">
+  <nav class="nav">
+    <a href="#top" class="nav-logo" aria-label="FLŌR home"><img src="images/logo.png" alt="FLŌR"></a>
+    <div class="nav-links">
+      <a href="#what">What is FLŌR</a>
+      <a href="#puffs">The Puffs</a>
+      <a href="#shop">Shop</a>
+      <a href="#sustainability">Sustainability</a>
+      <a href="#about">About</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="drawer" id="drawer">
+  <a href="#what">What is FLŌR</a>
+  <a href="#puffs">The Puffs</a>
+  <a href="#shop">Shop</a>
+  <a href="#sustainability">Sustainability</a>
+  <a href="#about">About</a>
+  <a class="mail" href="mailto:hello@florpuffs.com">hello@florpuffs.com</a>
+</div>
+
+<button class="totop" id="totop" aria-label="Back to top">↑</button>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <img class="hero-botanic l" src="images/lotus-left.png" alt="" aria-hidden="true">
+    <img class="hero-botanic r" src="images/lotus-right.png" alt="" aria-hidden="true">
+    <img class="hero-logo" src="images/logo.png" alt="FLŌR">
+    <p class="hero-tag">Food, experienced.</p>
+    <p class="hero-sub">Water lily seed puffs from India. Light, crisp and quietly unexpected.</p>
+    <span class="scroll-cue">Scroll</span>
+  </section>
+
+  <!-- ============ WHAT IS FLŌR ============ -->
+  <section id="what" class="band">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">What is FLŌR</span>
+        <img class="orn" src="images/lotus-mark.png" alt="" aria-hidden="true" style="width:46px;margin-bottom:26px">
+        <h2 class="rv">FLŌR is about<br>food, experienced.</h2>
+      </div>
+      <div class="two">
+        <p class="lead rv">Because food isn't just something to eat. It's something to discover, enjoy and remember.</p>
+        <div class="rv">
+          <p>The taste, the texture, where it comes from, the culture behind it, and the moments it becomes part of. The food we discover while travelling. The things we bring home. The flavours we introduce to someone else. The bowl we put out at four, something to share at six, or the little ritual of pouring yourself a bowl at nine.</p>
+          <p>We discover foods and snacks from different parts of the world and bring them to new tables — sometimes to share, sometimes simply to enjoy ourselves.</p>
+          <p>We start with an ingredient familiar in India but new to many elsewhere: <strong>makhana</strong>, transformed into light, crisp water lily seed puffs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WATER LILY SEED PUFFS ============ -->
+  <section id="puffs">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">Water Lily Seed Puffs</span>
+        <h2 class="rv">It starts in still water.</h2>
+      </div>
+      <img class="harvest rv" src="images/harvest.png" alt="Illustration: a grower harvesting water lily seeds from a pond, the seed pod, and a bowl of finished puffs">
+      <div class="two" style="margin-top:56px">
+        <p class="lead rv">A rather unexpected transformation.</p>
+        <div class="rv">
+          <p>Makhana is the seed of <em>Euryale ferox</em>, a water lily traditionally cultivated in India. The seeds are harvested, dried and roasted until they puff into something light, airy and crisp.</p>
+          <p>Makhana has been eaten in India for generations. We wanted to bring it somewhere new — and let the ingredient speak for itself.</p>
+          <p><strong>Light &amp; crisp.</strong> FLŌR Puffs are seasoned with the same attention we give everything we make: enough to make them interesting, never so much that you lose the ingredient underneath.</p>
+        </div>
+      </div>
+
+      <img class="rule-orn rv" src="images/divider.png" alt="" aria-hidden="true">
+
+      <div class="sec-head center" style="margin-bottom:30px">
+        <h2 class="rv" style="font-size:clamp(26px,3.6vw,38px)">Three ways to meet FLŌR</h2>
+      </div>
+
+      <div class="flavours">
+        <article class="fl fl-salt rv">
+          <div class="shot"><img src="images/pack-classic-salt.png" alt="FLŌR Classic Salt water lily seed puffs, 30 g pouch"></div>
+          <h3>Classic Salt</h3>
+          <p class="desc">Clean, savoury and properly crisp.</p>
+          <div class="bar"></div>
+        </article>
+        <article class="fl fl-peri rv">
+          <div class="shot"><img src="images/pack-peri-peri.png" alt="FLŌR Peri Peri water lily seed puffs, 30 g pouch"></div>
+          <h3>Peri Peri</h3>
+          <p class="desc">A little heat, a little more character.</p>
+          <div class="bar"></div>
+        </article>
+        <article class="fl fl-cocoa rv">
+          <div class="shot"><img src="images/pack-cocoa.png" alt="FLŌR Cocoa water lily seed puffs, 30 g pouch"></div>
+          <h3>Cocoa</h3>
+          <p class="desc">Deep cocoa notes with a light, crisp finish.</p>
+          <div class="bar"></div>
+        </article>
+      </div>
+
+      <p class="center rv" style="margin-top:44px;font-family:var(--display);font-size:22px;color:var(--ink)">
+        Try one. Try all three. Put out a bowl.
+      </p>
+
+      <div class="table-scroll rv">
+        <table>
+          <caption class="eyebrow" style="text-align:left;margin-bottom:16px">At a glance</caption>
+          <thead>
+            <tr>
+              <th scope="col" style="text-align:left"></th>
+              <th scope="col">Classic Salt</th>
+              <th scope="col">Peri Peri</th>
+              <th scope="col">Cocoa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Vegetarian</th><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><th scope="row">Vegan</th><td>✓</td><td>✓</td><td class="no">—</td></tr>
+            <tr><th scope="row">Gluten-free</th><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><th scope="row">Source of fibre</th><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><th scope="row">High in fibre</th><td>✓</td><td>✓</td><td class="no">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note rv">30 g pouch. Crisp by craft.</p>
+    </div>
+  </section>
+
+  <!-- ============ SHOP ============ -->
+  <section id="shop" class="band">
+    <div class="wrap center">
+      <div class="sec-head">
+        <span class="eyebrow">The Shop</span>
+        <h2 class="rv">Not quite yet.</h2>
+      </div>
+      <div class="shop-shelf rv">
+        <img src="images/pack-classic-salt.png" alt="FLŌR Classic Salt, 30 g">
+        <img src="images/pack-peri-peri.png" alt="FLŌR Peri Peri, 30 g">
+        <img src="images/pack-cocoa.png" alt="FLŌR Cocoa, 30 g">
+      </div>
+      <div class="rv">
+        <span class="badge">Coming soon</span>
+        <p style="margin:26px auto 0;color:var(--soft);max-width:44ch">
+          We're getting the first pouches ready. If you'd like to stock FLŌR, or simply want to know when the shop opens, write to us.
+        </p>
+        <a class="mailto" href="mailto:hello@florpuffs.com">hello@florpuffs.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SUSTAINABILITY ============ -->
+  <section id="sustainability">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">Sustainability</span>
+        <h2 class="rv">Not a box to tick.</h2>
+      </div>
+
+      <div class="two" style="margin-bottom:20px">
+        <p class="lead rv">It's a must-have for us.</p>
+        <div class="rv">
+          <p>Sustainability isn't something we're adding to FLŌR because we're supposed to.</p>
+          <p>We want to understand the full journey of what we make — from the people growing and harvesting our ingredients to the materials we use to package them, and what happens to that packaging afterwards.</p>
+          <p>We're still at the beginning, so we're honest about what we haven't figured out yet. But we know where we want to go.</p>
+        </div>
+      </div>
+
+      <img class="rule-orn rv" src="images/divider.png" alt="" aria-hidden="true">
+
+      <div class="sus-block rv">
+        <h3>Closer to the source</h3>
+        <p>Today, our makhana is sourced through a trader. As we grow, we want to build a much closer relationship with the people behind the ingredient. We're exploring ways to <strong>source more directly and pay farmers a meaningful premium</strong> for the ingredient we buy.</p>
+        <p>For us, that means understanding more about how makhana is grown and harvested, who is involved, and how value is distributed along the way. It's not just about knowing where something comes from. <strong>It's about making sure the people at the beginning of the journey benefit from where it ends up.</strong></p>
+      </div>
+
+      <div class="sus-block rv">
+        <h3>Better packaging</h3>
+        <p>Our current pouch isn't perfect. Makhana is highly sensitive to moisture, so protecting its crispness requires a high-barrier structure. Today, that means a multi-layer pack containing plastic and aluminium.</p>
+        <p>It works. But we'd like to do better. Our ambition is to move towards a <strong>mono-material, recyclable pack — ideally using recycled material where the right solution exists.</strong></p>
+        <p>We're looking at materials, suppliers and structures that can give us the barrier protection the product needs while making the packaging simpler and more circular. We don't want to make a sustainability claim simply because a material sounds better. <strong>It needs to actually be better.</strong></p>
+      </div>
+
+      <div class="sus-block rv">
+        <h3>The whole journey</h3>
+        <p>For us, this isn't just a packaging problem or a sourcing problem. It's the whole thing:</p>
+        <ul class="journey">
+          <li>How it's grown.</li>
+          <li>Who grows it.</li>
+          <li>How it's harvested.</li>
+          <li>How it's processed.</li>
+          <li>How it travels.</li>
+          <li>How we package it.</li>
+          <li>And what happens to the pack afterwards.</li>
+        </ul>
+        <p style="margin-top:30px">We're building that picture piece by piece. And as FLŌR grows, we want to share what we learn — including the parts we haven't solved yet.</p>
+        <p class="closing">Sustainability isn't a destination for us. It's a standard we want to build the company around.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="band">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">About Us</span>
+        <h2 class="rv">Two founders.<br>One shared curiosity.</h2>
+      </div>
+
+      <div class="two">
+        <p class="lead rv">We are Shourya and Nienke, based in Amsterdam.</p>
+        <div class="rv">
+          <p>Between us, we have spent almost two decades in consumer goods and the flower business — industries where sourcing, quality, packaging and presentation matter, and where a good product still has to make its way from producer to consumer.</p>
+          <p>We have travelled a lot, lived around different cultures and, like most people who are curious about the world, tend to come home with things we've eaten rather than things we've bought.</p>
+        </div>
+      </div>
+
+      <div class="founders">
+        <div class="founder rv">
+          <h3>Shourya</h3>
+          <p>Eight years at Heineken in FMCG, after studying at Rotterdam School of Management and London Business School.</p>
+        </div>
+        <div class="founder rv">
+          <h3>Nienke</h3>
+          <p>More than ten years in the flower business, working across sales and packaging, after studying at Rotterdam School of Management.</p>
+        </div>
+      </div>
+
+      <img class="rule-orn rv" src="images/divider.png" alt="" aria-hidden="true">
+
+      <p class="pull rv">Food is often the best souvenir.</p>
+      <p class="center rv" style="margin-top:26px;color:var(--soft);max-width:60ch">
+        It gives you a taste of somewhere you've been, introduces you to somewhere you've never been, and creates experiences that stay with you. That is what we want to build with FLŌR Puffs: a company that discovers interesting foods from around the world and brings them to new tables.
+      </p>
+      <p class="center rv" style="margin-top:22px;font-family:var(--display);font-size:20px;color:var(--ink)">
+        Our first product is water lily seed puffs from India.<br>It's the beginning, not the destination.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="flogo" src="images/logo.png" alt="FLŌR">
+    <p class="foot-tag">Food, experienced.</p>
+    <div class="foot-links">
+      <a href="#what">What is FLŌR</a>
+      <a href="#puffs">The Puffs</a>
+      <a href="#shop">Shop</a>
+      <a href="#sustainability">Sustainability</a>
+      <a href="#about">About</a>
       <a href="mailto:hello@florpuffs.com">hello@florpuffs.com</a>
-    </p>
-  </main>
+    </div>
+    <p class="foot-legal">© <span id="yr">2026</span> FLŌR · Amsterdam, The Netherlands</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const hdr    = document.getElementById('hdr');
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  const totop  = document.getElementById('totop');
+  const navLinks = [...document.querySelectorAll('.nav-links a')];
+  const sections = navLinks
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  /* ---- mobile drawer ---- */
+  const setMenu = (open) => {
+    drawer.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  burger.addEventListener('click', () => setMenu(!drawer.classList.contains('open')));
+  drawer.addEventListener('click', (e) => { if (e.target.tagName === 'A') setMenu(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+  // close the drawer if the window grows past the mobile breakpoint
+  window.addEventListener('resize', () => { if (window.innerWidth > 860) setMenu(false); });
+
+  /* ---- back to top ---- */
+  totop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  /* ---- sticky header, scroll spy, back-to-top visibility ---- */
+  const onScroll = () => {
+    const y = window.scrollY;
+    hdr.classList.toggle('stuck', y > 60);
+    totop.classList.toggle('show', y > 700);
+
+    // highlight whichever section is crossing the upper third of the viewport
+    let current = null;
+    const mark = window.innerHeight * 0.34;
+    for (const s of sections) {
+      if (s.getBoundingClientRect().top <= mark) current = s.id;
+    }
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (!e.isIntersecting) return;
+      e.target.style.transitionDelay = Math.min(i * 90, 360) + 'ms';
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, {threshold: 0.12, rootMargin: '0px 0px -60px 0px'});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
