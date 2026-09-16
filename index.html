@@ -56,7 +56,18 @@ p + p{margin-top:19px}
    Garamond, which does (verified against the font file). Headings already
    use Cormorant, so this only changes how it looks inside body text, the
    nav and the footer. Type FLŌR normally and wrap it: <span class="flor">FLŌR</span> */
-.flor{font-family:var(--display);font-weight:inherit}
+.flor{
+  font-family:var(--display);
+  /* Cormorant's capitals are shorter and lighter than Jost's at the same px,
+     so the wordmark needs a nudge to sit level with the text around it */
+  font-size:1.11em;
+  font-weight:500;
+  letter-spacing:.03em;
+}
+/* where the surrounding text is already Cormorant, no compensation needed */
+h2 .flor,h3 .flor,.hero-tag .flor,.drawer a .flor{
+  font-size:1em;font-weight:inherit;letter-spacing:inherit;
+}
 .lead{font-family:var(--sans);font-size:17px;font-weight:300;color:var(--body);line-height:1.75;max-width:none}
 strong{font-weight:400;color:var(--ink)}
 em{font-style:italic}
@@ -195,7 +206,7 @@ section{padding:clamp(80px,11vw,130px) 0;position:relative}
 .two,.col,.sus-block{max-width:64ch;margin-left:auto;margin-right:auto}
 .two{display:block}
 .two > * + *{margin-top:19px}
-.two p,.col,.sus-block p{max-width:none}
+.two p,.sus-block p{max-width:none}
 
 /* ---------------- product ---------------- */
 .harvest{width:min(1000px,100%);margin:0 auto 10px;opacity:.9}
