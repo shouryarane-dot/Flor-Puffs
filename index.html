@@ -31,16 +31,6 @@
   --display:'Cormorant Garamond',Georgia,serif;
   --sans:'Jost',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   --max:1140px;
-
-  /* ---- the bar over the O in FLŌR ----
-     These four numbers are the ONLY place the macron is controlled.
-     Smaller --mcr-top = bar sits higher. Larger = bar sits lower.
-     --mcr-w is its width, --mcr-h its thickness. All relative to text size,
-     so they scale automatically from the nav to the big headings. */
-  --mcr-top-sans:-.04em;   /* body text + nav (Jost) */
-  --mcr-top-serif:.01em;   /* headings (Cormorant, shorter caps) */
-  --mcr-w:.48em;
-  --mcr-h:.06em;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -59,30 +49,15 @@ h2{font-size:clamp(30px,4.6vw,50px);letter-spacing:.005em}
 h3{font-size:24px;font-weight:400}
 p{max-width:64ch}
 p + p{margin-top:19px}
-.lead{font-size:clamp(20px,2.6vw,26px);font-family:var(--display);color:var(--ink);line-height:1.45;max-width:26ch}
+/* .lead used to be a large serif line set beside the body copy.
+   It is now simply another paragraph, same as everything else. */
+.lead{font-family:var(--sans);font-size:17px;font-weight:300;color:var(--body);line-height:1.75;max-width:none}
 strong{font-weight:400;color:var(--ink)}
 em{font-style:italic}
 
 .eyebrow{
   font-size:11px;letter-spacing:.3em;text-transform:uppercase;
   font-weight:400;color:var(--ink);opacity:.55;display:block;
-}
-
-/* ---- FLŌR wordmark ----
-   The macron is DRAWN, not typed. Web fonts don't all carry the Ō glyph, and
-   where they don't the browser borrows it from another font — which letter-spacing
-   then shoves sideways off the O. The script at the bottom of this file swaps every
-   typed Ō for <span class="mcr">O</span>, so you can still just type FLŌR normally. */
-.mcr{position:relative;display:inline-block;line-height:1;letter-spacing:0}
-.mcr::after{
-  content:'';position:absolute;
-  /* centred with auto margins rather than translate — a half-pixel transform
-     at small sizes was enough to make the bar look off to one side */
-  left:0;right:0;margin-inline:auto;
-  top:var(--mcr-top,.05em);
-  width:var(--mcr-w,.46em);
-  height:var(--mcr-h,.06em);min-height:1px;
-  background:currentColor;
 }
 
 /* ---------------- nav ---------------- */
@@ -162,10 +137,20 @@ header.stuck .nav-logo img{width:76px}
   min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:130px 24px 90px;position:relative;overflow:hidden;
 }
-.hero-logo{width:min(400px,72vw);margin:0 auto}
+.hero-logo{width:min(340px,64vw);margin:0 auto}
 .hero-tag{
-  margin-top:34px;font-family:var(--display);font-size:clamp(23px,3.6vw,36px);
+  margin-top:26px;font-family:var(--display);font-size:clamp(21px,3.2vw,32px);
   color:var(--ink);font-weight:300;letter-spacing:.005em;
+}
+
+/* hero: a single Classic Salt pouch under the wordmark */
+.hero-packs{
+  display:flex;justify-content:center;
+  width:100%;margin-top:clamp(22px,3.5vw,42px);
+}
+.hero-packs .lead-pack{
+  width:clamp(140px,20vw,232px);
+  filter:drop-shadow(0 28px 32px rgba(82,47,25,.18));
 }
 .hero-botanic{
   position:absolute;top:50%;transform:translateY(-50%);
@@ -197,8 +182,14 @@ section{padding:clamp(80px,11vw,130px) 0;position:relative}
 .orn{display:block;width:112px;margin:0 auto 30px;opacity:.5}
 .rule-orn{display:block;width:min(340px,70%);margin:60px auto;opacity:.4}
 
-.two{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,6vw,80px);align-items:start}
-@media(max-width:860px){.two{grid-template-columns:1fr;gap:30px}}
+/* ---- one straight column ----
+   No more side-by-side text. Every paragraph on the page uses the same
+   font and the same size, stacked one below the other in a single
+   centred column. Headings stay centred above their section. */
+.two,.col,.sus-block{max-width:64ch;margin-left:auto;margin-right:auto}
+.two{display:block}
+.two > * + *{margin-top:19px}
+.two p,.col,.sus-block p{max-width:none}
 
 /* ---------------- product ---------------- */
 .harvest{width:min(1000px,100%);margin:0 auto 10px;opacity:.9}
@@ -275,13 +266,12 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
   content:'';position:absolute;left:0;top:.82em;width:11px;height:1px;background:var(--ink);opacity:.45;
 }
 .closing{
-  margin-top:56px;font-family:var(--display);font-size:clamp(21px,2.8vw,28px);
-  color:var(--ink);line-height:1.5;max-width:30ch;
+  margin-top:19px;font-family:var(--sans);font-size:17px;font-weight:300;
+  color:var(--burg);line-height:1.75;max-width:none;
 }
 
 /* ---------------- about ---------------- */
-/* founders: portrait centred, the two bios side by side beneath it —
-   symmetrical, to match the centred section heading above */
+/* founders portrait, centred */
 .team-photo{margin-top:46px}
 .team-photo img{
   width:min(360px,78%);margin:0 auto;
@@ -289,17 +279,9 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
   -webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);
   mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);
 }
-.team-bios{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:clamp(28px,5vw,60px);margin-top:14px;
-}
-@media(max-width:760px){.team-bios{grid-template-columns:1fr;gap:30px}}
-.founder{border-top:1px solid var(--line);padding-top:26px}
-.founder h3{font-size:26px;margin-bottom:10px}
-.founder p{font-size:15.5px;color:var(--soft)}
 .pull{
-  font-family:var(--display);font-size:clamp(24px,3.4vw,34px);color:var(--ink);
-  line-height:1.4;margin:0 auto;max-width:22ch;text-align:center;
+  font-family:var(--sans);font-size:17px;font-weight:300;color:var(--terra);
+  line-height:1.75;margin:0 auto;max-width:64ch;text-align:left;
 }
 
 /* ---------------- footer ---------------- */
@@ -408,6 +390,9 @@ thead th:nth-child(4){color:var(--burg)}
     <img class="hero-botanic r" src="images/lotus-right.png" alt="" aria-hidden="true">
     <img class="hero-logo" src="images/logo.png" alt="FLŌR">
     <p class="hero-tag">Food, experienced.</p>
+    <div class="hero-packs">
+      <img class="lead-pack" src="images/pack-classic-salt.png" alt="FLŌR Classic Salt water lily seed puffs">
+    </div>
     <span class="scroll-cue">Scroll</span>
   </section>
 
@@ -474,7 +459,7 @@ thead th:nth-child(4){color:var(--burg)}
         </article>
       </div>
 
-      <p class="center rv" style="margin-top:44px;font-family:var(--display);font-size:22px;color:var(--ink)">
+      <p class="col rv" style="margin-top:40px">
         Try one. Try all three. Put out a bowl.
       </p>
 
@@ -593,25 +578,15 @@ thead th:nth-child(4){color:var(--burg)}
       <div class="team-photo rv">
         <img src="images/founders.png" alt="Shourya and Nienke, the founders of FLŌR">
       </div>
-      <div class="team-bios">
-          <div class="founder rv">
-            <h3>Shourya</h3>
-            <p>Eight years at Heineken in FMCG, after studying at Rotterdam School of Management and London Business School.</p>
-          </div>
-          <div class="founder rv">
-            <h3>Nienke</h3>
-            <p>More than ten years in the flower business, working across sales and packaging, after studying at Rotterdam School of Management.</p>
-          </div>
-      </div>
 
       <img class="rule-orn rv" src="images/divider.png" alt="" aria-hidden="true">
 
       <p class="pull rv">Food is often the best souvenir.</p>
-      <p class="center rv" style="margin-top:26px;color:var(--soft);max-width:60ch">
+      <p class="col rv" style="margin-top:19px">
         It gives you a taste of somewhere you've been, introduces you to somewhere you've never been, and creates experiences that stay with you. That is what we want to build with FLŌR Puffs: a company that discovers interesting foods from around the world and brings them to new tables.
       </p>
-      <p class="center rv" style="margin-top:22px;font-family:var(--display);font-size:20px;color:var(--ink)">
-        Our first product is water lily seed puffs from India.<br>It's the beginning, not the destination.
+      <p class="col rv" style="margin-top:19px">
+        Our first product is water lily seed puffs from India. It's the beginning, not the destination.
       </p>
     </div>
   </section>
@@ -635,44 +610,6 @@ thead th:nth-child(4){color:var(--burg)}
 </footer>
 
 <script>
-  /* ---- FLŌR: draw the macron instead of trusting the font ----
-     Swaps every typed Ō for a span with a CSS-drawn bar. Keeps the HTML above
-     plainly editable — type FLŌR as normal and this handles the rendering.
-     Nudge --mcr-top below if the bar ever sits too high or low. */
-  (function () {
-    const SKIP = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT']);
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-      acceptNode: n => (!SKIP.has(n.parentNode.nodeName) && n.nodeValue.includes('Ō'))
-        ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
-    });
-    const nodes = [];
-    while (walker.nextNode()) nodes.push(walker.currentNode);
-
-    for (const node of nodes) {
-      const parent = node.parentNode;
-      const cs = getComputedStyle(parent);
-      const serif = /Cormorant/i.test(cs.fontFamily);   // display face sits lower
-      const ls = cs.letterSpacing;
-      const frag = document.createDocumentFragment();
-
-      node.nodeValue.split('Ō').forEach((chunk, i) => {
-        if (i) {
-          const s = document.createElement('span');
-          s.className = 'mcr';
-          s.textContent = 'O';
-          s.style.setProperty('--mcr-top',
-            getComputedStyle(document.documentElement)
-              .getPropertyValue(serif ? '--mcr-top-serif' : '--mcr-top-sans').trim());
-          // the span zeroes letter-spacing internally, so give the gap back
-          if (ls && ls !== 'normal' && parseFloat(ls)) s.style.marginRight = ls;
-          frag.appendChild(s);
-        }
-        if (chunk) frag.appendChild(document.createTextNode(chunk));
-      });
-      parent.replaceChild(frag, node);
-    }
-  })();
-
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   const hdr    = document.getElementById('hdr');
