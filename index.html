@@ -202,10 +202,10 @@ section{padding:clamp(80px,11vw,130px) 0;position:relative}
    No more side-by-side text. Every paragraph on the page uses the same
    font and the same size, stacked one below the other in a single
    centred column. Headings stay centred above their section. */
-.two,.col,.sus-block{max-width:64ch;margin-left:auto;margin-right:auto}
+.two,.col{max-width:64ch;margin-left:auto;margin-right:auto}
 .two{display:block}
 .two > * + *{margin-top:19px}
-.two p,.sus-block p{max-width:none}
+.two p{max-width:none}
 
 /* ---------------- product ---------------- */
 .harvest{width:min(1000px,100%);margin:0 auto 10px;opacity:.9}
@@ -270,24 +270,6 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
 .preorder a:hover{color:var(--terra);border-bottom-color:var(--terra)}
 
 /* ---------------- sustainability ---------------- */
-/* sustainability sub-sections: no rules between them, just consistent
-   spacing and one heading style, so the section reads as a structure */
-.sus-block{margin-top:44px}
-.sus-block:first-of-type{margin-top:0}
-.sus-block h3{font-size:19px;margin-bottom:12px;letter-spacing:.01em}
-.journey{
-  margin:18px 0 0;list-style:none;
-  font-family:var(--sans);font-size:17px;font-weight:300;
-  color:var(--body);line-height:1.9;
-}
-.journey li{padding-left:20px;position:relative}
-.journey li::before{
-  content:'';position:absolute;left:0;top:.87em;width:9px;height:1px;background:var(--terra);
-}
-.closing{
-  margin-top:19px;font-family:var(--sans);font-size:17px;font-weight:300;
-  color:var(--burg);line-height:1.75;max-width:none;
-}
 
 /* ---------------- about ---------------- */
 /* founders portrait, centred */
@@ -297,10 +279,6 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
   /* soft fade so the cut-out doesn't end on a hard edge against the cream */
   -webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);
   mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);
-}
-.pull{
-  font-family:var(--sans);font-size:17px;font-weight:300;color:var(--terra);
-  line-height:1.75;margin:0 auto;max-width:64ch;text-align:left;
 }
 
 /* ---------------- footer ---------------- */
@@ -345,8 +323,6 @@ thead th:nth-child(3){color:var(--terra)}
 thead th:nth-child(4){color:var(--burg)}
 
 /* sustainability + about accents */
-.closing{color:var(--burg)}
-.pull{color:var(--terra)}
 
 /* ---- the Shop goes dark: the one commercial moment on the page,
         and the pouches read far better against a deep ground ---- */
@@ -530,38 +506,8 @@ thead th:nth-child(4){color:var(--burg)}
         <span class="eyebrow">Sustainability</span>
         <h2 class="rv">Not a box to tick.</h2>
       </div>
-
-      <div class="two" style="margin-bottom:20px">
-        <div class="rv">
-          <p>Sustainability isn't something we're adding to <span class="flor">FLŌR</span> because we're supposed to. It's a must-have for us.</p>
-          <p>We're still at the beginning, so we're honest about what we haven't figured out yet. But we know where we want to go.</p>
-        </div>
-      </div>
-
-      <div class="sus-block rv">
-        <h3>Closer to the source</h3>
-        <p>Today, our makhana is sourced through a trader. We're exploring ways to <strong>source more directly and pay farmers a meaningful premium</strong>.</p>
-        <p>It's not just about knowing where something comes from. <strong>It's about making sure the people at the beginning of the journey benefit from where it ends up.</strong></p>
-      </div>
-
-      <div class="sus-block rv">
-        <h3>Better packaging</h3>
-        <p>Our current pouch isn't perfect. Makhana is highly sensitive to moisture, so protecting its crispness requires a multi-layer pack containing plastic and aluminium.</p>
-        <p>It works. But we'd like to do better. Our ambition is to move towards a <strong>mono-material, recyclable pack</strong>.</p>
-        <p>We don't want to make a sustainability claim simply because a material sounds better. <strong>It needs to actually be better.</strong></p>
-      </div>
-
-      <div class="sus-block rv">
-        <h3>The whole journey</h3>
-        <p>For us, this isn't just a packaging problem or a sourcing problem. It's the whole thing:</p>
-        <ul class="journey">
-          <li>How it's grown. Who grows it.</li>
-          <li>How it's harvested and processed.</li>
-          <li>How it travels. How we package it.</li>
-          <li>And what happens to the pack afterwards.</li>
-        </ul>
-        <p style="margin-top:26px">We're building that picture piece by piece. And we want to share what we learn, including the parts we haven't solved yet.</p>
-        <p class="closing">Sustainability isn't a destination for us. It's a standard we want to build the company around.</p>
+      <div class="two">
+        <p class="rv">Sustainability isn't something we're adding to <span class="flor">FLŌR</span> because we're supposed to. It's a must-have for us. Our makhana is sourced through a trader today, and we're exploring ways to source more directly and pay farmers a meaningful premium. Our pouch isn't perfect either. Protecting crispness means a multi-layer pack, and our ambition is a mono-material, recyclable one. We're still at the beginning, and honest about what we haven't figured out yet.</p>
       </div>
     </div>
   </section>
@@ -585,15 +531,6 @@ thead th:nth-child(4){color:var(--burg)}
       <div class="team-photo rv">
         <img src="images/founders.png" alt="Shourya and Nienke, the founders of FLŌR">
       </div>
-
-
-      <p class="pull rv">Food is often the best souvenir.</p>
-      <p class="col rv" style="margin-top:19px">
-        It gives you a taste of somewhere you've been, introduces you to somewhere you've never been, and creates experiences that stay with you. That is what we want to build with <span class="flor">FLŌR</span> Puffs: a company that discovers interesting foods from around the world and brings them to new tables.
-      </p>
-      <p class="col rv" style="margin-top:19px">
-        Our first product is water lily seed puffs from India. It's the beginning, not the destination.
-      </p>
     </div>
   </section>
 
