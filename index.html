@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FLŌR — Water Lily Seed Puffs</title>
+<title>FLŌR. Water Lily Seed Puffs</title>
 <meta name="description" content="FLŌR is about food, experienced. We discover foods and snacks from different parts of the world and bring them to new tables.">
-<meta property="og:title" content="FLŌR — Water Lily Seed Puffs">
+<meta property="og:title" content="FLŌR. Water Lily Seed Puffs">
 <meta property="og:description" content="Food, experienced. Classic Salt, Peri Peri, Cocoa.">
 <meta property="og:image" content="images/pack-peri-peri.png">
 <meta property="og:type" content="website">
@@ -197,7 +197,6 @@ section{padding:clamp(80px,11vw,130px) 0;position:relative}
 .center .lead{margin-left:auto;margin-right:auto}
 
 .orn{display:block;width:112px;margin:0 auto 30px;opacity:.5}
-.rule-orn{display:block;width:min(340px,70%);margin:60px auto;opacity:.4}
 
 /* ---- one straight column ----
    No more side-by-side text. Every paragraph on the page uses the same
@@ -271,16 +270,19 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
 .preorder a:hover{color:var(--terra);border-bottom-color:var(--terra)}
 
 /* ---------------- sustainability ---------------- */
-.sus-block{padding-top:44px;margin-top:44px;border-top:1px solid var(--line-soft)}
-.sus-block:first-of-type{border-top:none;margin-top:0;padding-top:0}
-.sus-block h3{margin-bottom:14px}
+/* sustainability sub-sections: no rules between them, just consistent
+   spacing and one heading style, so the section reads as a structure */
+.sus-block{margin-top:44px}
+.sus-block:first-of-type{margin-top:0}
+.sus-block h3{font-size:19px;margin-bottom:12px;letter-spacing:.01em}
 .journey{
-  margin:34px 0 0;list-style:none;
-  font-family:var(--display);font-size:clamp(19px,2.4vw,24px);color:var(--ink);line-height:1.9;
+  margin:18px 0 0;list-style:none;
+  font-family:var(--sans);font-size:17px;font-weight:300;
+  color:var(--body);line-height:1.9;
 }
-.journey li{padding-left:26px;position:relative}
+.journey li{padding-left:20px;position:relative}
 .journey li::before{
-  content:'';position:absolute;left:0;top:.82em;width:11px;height:1px;background:var(--ink);opacity:.45;
+  content:'';position:absolute;left:0;top:.87em;width:9px;height:1px;background:var(--terra);
 }
 .closing{
   margin-top:19px;font-family:var(--sans);font-size:17px;font-weight:300;
@@ -343,7 +345,6 @@ thead th:nth-child(3){color:var(--terra)}
 thead th:nth-child(4){color:var(--burg)}
 
 /* sustainability + about accents */
-.journey li::before{background:var(--terra);opacity:.8;width:14px}
 .closing{color:var(--burg)}
 .pull{color:var(--terra)}
 
@@ -425,7 +426,7 @@ thead th:nth-child(4){color:var(--burg)}
         <p class="lead rv">Because food isn't just something to eat. It's something to discover, enjoy and remember.</p>
         <div class="rv">
           <p>The taste, the texture, where it comes from, the culture behind it, and the moments it becomes part of. The food we discover while travelling. The things we bring home. The flavours we introduce to someone else. The bowl we put out when the day needs a pause, something to share when friends and family are around, or the quiet ritual of pouring yourself one at the end of a long day.</p>
-          <p>We discover foods and snacks from different parts of the world and bring them to new tables — sometimes to share, sometimes simply to enjoy ourselves.</p>
+          <p>We discover foods and snacks from different parts of the world and bring them to new tables. Sometimes to share, sometimes simply to enjoy ourselves.</p>
           <p>We start with an ingredient familiar in India but new to many elsewhere: <strong>makhana</strong>, transformed into light, crisp water lily seed puffs.</p>
         </div>
       </div>
@@ -444,12 +445,11 @@ thead th:nth-child(4){color:var(--burg)}
         <p class="lead rv">A rather unexpected transformation.</p>
         <div class="rv">
           <p>Makhana is the seed of <em>Euryale ferox</em>, a water lily traditionally cultivated in India. The seeds are harvested, dried and roasted until they puff into something light, airy and crisp.</p>
-          <p>Makhana has been eaten in India for generations. We wanted to bring it somewhere new — and let the ingredient speak for itself.</p>
+          <p>Makhana has been eaten in India for generations. We wanted to bring it somewhere new, and let the ingredient speak for itself.</p>
           <p><strong>Light &amp; crisp.</strong> <span class="flor">FLŌR</span> Puffs are seasoned with the same attention we give everything we make: enough to make them interesting, never so much that you lose the ingredient underneath.</p>
         </div>
       </div>
 
-      <img class="rule-orn rv" src="images/divider.png" alt="" aria-hidden="true">
 
       <div class="sec-head center" style="margin-bottom:30px">
         <h2 class="rv" style="font-size:clamp(26px,3.6vw,38px)">Three ways to meet <span class="flor">FLŌR</span></h2>
@@ -471,14 +471,11 @@ thead th:nth-child(4){color:var(--burg)}
         <article class="fl fl-cocoa rv">
           <div class="shot"><img src="images/pack-cocoa.png" alt="FLŌR Cocoa water lily seed puffs, 30 g pouch"></div>
           <h3>Cocoa</h3>
-          <p class="desc">Deep cocoa notes with a light, crisp finish.</p>
+          <p class="desc">Deep cocoa notes, for an indulgent bite.</p>
           <div class="bar"></div>
         </article>
       </div>
 
-      <p class="col rv" style="margin-top:40px">
-        Try one. Try all three. Put out a bowl.
-      </p>
 
       <div class="table-scroll rv">
         <table>
@@ -493,10 +490,10 @@ thead th:nth-child(4){color:var(--burg)}
           </thead>
           <tbody>
             <tr><th scope="row">Vegetarian</th><td>✓</td><td>✓</td><td>✓</td></tr>
-            <tr><th scope="row">Vegan</th><td>✓</td><td>✓</td><td class="no">—</td></tr>
+            <tr><th scope="row">Vegan</th><td>✓</td><td>✓</td><td class="no">No</td></tr>
             <tr><th scope="row">Gluten-free</th><td>✓</td><td>✓</td><td>✓</td></tr>
             <tr><th scope="row">Source of fibre</th><td>✓</td><td>✓</td><td>✓</td></tr>
-            <tr><th scope="row">High in fibre</th><td>✓</td><td>✓</td><td class="no">—</td></tr>
+            <tr><th scope="row">High in fibre</th><td>✓</td><td>✓</td><td class="no">No</td></tr>
           </tbody>
         </table>
       </div>
@@ -535,42 +532,35 @@ thead th:nth-child(4){color:var(--burg)}
       </div>
 
       <div class="two" style="margin-bottom:20px">
-        <p class="lead rv">It's a must-have for us.</p>
         <div class="rv">
-          <p>Sustainability isn't something we're adding to <span class="flor">FLŌR</span> because we're supposed to.</p>
-          <p>We want to understand the full journey of what we make — from the people growing and harvesting our ingredients to the materials we use to package them, and what happens to that packaging afterwards.</p>
+          <p>Sustainability isn't something we're adding to <span class="flor">FLŌR</span> because we're supposed to. It's a must-have for us.</p>
           <p>We're still at the beginning, so we're honest about what we haven't figured out yet. But we know where we want to go.</p>
         </div>
       </div>
 
-      <img class="rule-orn rv" src="images/divider.png" alt="" aria-hidden="true">
-
       <div class="sus-block rv">
         <h3>Closer to the source</h3>
-        <p>Today, our makhana is sourced through a trader. As we grow, we want to build a much closer relationship with the people behind the ingredient. We're exploring ways to <strong>source more directly and pay farmers a meaningful premium</strong> for the ingredient we buy.</p>
-        <p>For us, that means understanding more about how makhana is grown and harvested, who is involved, and how value is distributed along the way. It's not just about knowing where something comes from. <strong>It's about making sure the people at the beginning of the journey benefit from where it ends up.</strong></p>
+        <p>Today, our makhana is sourced through a trader. We're exploring ways to <strong>source more directly and pay farmers a meaningful premium</strong>.</p>
+        <p>It's not just about knowing where something comes from. <strong>It's about making sure the people at the beginning of the journey benefit from where it ends up.</strong></p>
       </div>
 
       <div class="sus-block rv">
         <h3>Better packaging</h3>
-        <p>Our current pouch isn't perfect. Makhana is highly sensitive to moisture, so protecting its crispness requires a high-barrier structure. Today, that means a multi-layer pack containing plastic and aluminium.</p>
-        <p>It works. But we'd like to do better. Our ambition is to move towards a <strong>mono-material, recyclable pack — ideally using recycled material where the right solution exists.</strong></p>
-        <p>We're looking at materials, suppliers and structures that can give us the barrier protection the product needs while making the packaging simpler and more circular. We don't want to make a sustainability claim simply because a material sounds better. <strong>It needs to actually be better.</strong></p>
+        <p>Our current pouch isn't perfect. Makhana is highly sensitive to moisture, so protecting its crispness requires a multi-layer pack containing plastic and aluminium.</p>
+        <p>It works. But we'd like to do better. Our ambition is to move towards a <strong>mono-material, recyclable pack</strong>.</p>
+        <p>We don't want to make a sustainability claim simply because a material sounds better. <strong>It needs to actually be better.</strong></p>
       </div>
 
       <div class="sus-block rv">
         <h3>The whole journey</h3>
         <p>For us, this isn't just a packaging problem or a sourcing problem. It's the whole thing:</p>
         <ul class="journey">
-          <li>How it's grown.</li>
-          <li>Who grows it.</li>
-          <li>How it's harvested.</li>
-          <li>How it's processed.</li>
-          <li>How it travels.</li>
-          <li>How we package it.</li>
+          <li>How it's grown. Who grows it.</li>
+          <li>How it's harvested and processed.</li>
+          <li>How it travels. How we package it.</li>
           <li>And what happens to the pack afterwards.</li>
         </ul>
-        <p style="margin-top:30px">We're building that picture piece by piece. And as <span class="flor">FLŌR</span> grows, we want to share what we learn — including the parts we haven't solved yet.</p>
+        <p style="margin-top:26px">We're building that picture piece by piece. And we want to share what we learn, including the parts we haven't solved yet.</p>
         <p class="closing">Sustainability isn't a destination for us. It's a standard we want to build the company around.</p>
       </div>
     </div>
@@ -587,7 +577,7 @@ thead th:nth-child(4){color:var(--burg)}
       <div class="two">
         <p class="lead rv">We are Shourya and Nienke, based in Amsterdam.</p>
         <div class="rv">
-          <p>Between us, we have spent almost two decades in consumer goods and the flower business — industries where sourcing, quality, packaging and presentation matter, and where a good product still has to make its way from producer to consumer.</p>
+          <p>Between us, we have spent almost two decades in consumer goods and the flower business, industries where sourcing, quality, packaging and presentation matter, and where a good product still has to make its way from producer to consumer.</p>
           <p>We have travelled a lot, lived around different cultures and, like most people who are curious about the world, tend to come home with things we've eaten rather than things we've bought.</p>
         </div>
       </div>
@@ -596,7 +586,6 @@ thead th:nth-child(4){color:var(--burg)}
         <img src="images/founders.png" alt="Shourya and Nienke, the founders of FLŌR">
       </div>
 
-      <img class="rule-orn rv" src="images/divider.png" alt="" aria-hidden="true">
 
       <p class="pull rv">Food is often the best souvenir.</p>
       <p class="col rv" style="margin-top:19px">
