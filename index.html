@@ -221,8 +221,21 @@ section{padding:clamp(64px,10vw,124px) 0;position:relative}
 
 /* ---------------- product ---------------- */
 .harvest{width:min(1000px,100%);margin:0 auto 10px;opacity:.9}
-.flavours{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,3vw,40px);margin-top:20px;max-width:1000px;margin-inline:auto}
-@media(max-width:600px){.flavours{gap:10px}.fl .shot{padding:14px 6px 10px}.fl h3{font-size:18px;margin-top:16px}.fl .desc{font-size:13px;line-height:1.55}.fl .size{font-size:10.5px;letter-spacing:.12em}}
+.flavours{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,3vw,40px);margin-top:20px;max-width:1000px;margin-inline:auto}
+@media(max-width:600px){
+  /* phone: one flavour per row, pack on the left, text on the right */
+  .flavours{grid-template-columns:1fr;gap:14px;max-width:440px}
+  .flavours .fl{position:relative;text-align:left;min-height:168px;padding-left:132px;
+      display:flex;flex-direction:column;justify-content:center}
+  .flavours .fl .shot{position:absolute;left:0;top:0;bottom:0;width:114px;padding:12px;
+      display:flex;align-items:center;justify-content:center}
+  .flavours .fl img{width:100%}
+  .flavours .fl:hover .shot{transform:none}
+  .flavours .fl h3{margin-top:0;font-size:22px}
+  .flavours .fl .desc{font-size:15px;line-height:1.55;margin:4px 0 0;max-width:none}
+  .flavours .fl .size{font-size:11px;letter-spacing:.16em;margin-top:8px}
+  .flavours .fl .bar{margin:12px 0 0}
+}
 .fl .soon-tag{color:var(--burg);white-space:nowrap}
 .claims-for{margin:48px auto 0;text-align:center;font-family:var(--display);font-style:italic;font-size:18px;color:var(--soft)}
 .fl .size{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
@@ -260,13 +273,13 @@ td.no{color:var(--soft);opacity:.5}
 tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
 .claims{
   list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:10px 0;
-  margin:14px auto 0;padding:22px 0;max-width:620px;
+  margin:48px auto 0;padding:22px 0;max-width:620px;
   border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
   font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);
 }
 .claims li{padding:0 20px;position:relative}
 .claims li + li::before{content:'';position:absolute;left:-2px;top:50%;width:4px;height:4px;margin-top:-2px;border-radius:50%;background:var(--terra);opacity:.7}
-@media(max-width:600px){.claims-for{margin-top:36px}.claims{margin-top:12px;font-size:11px;letter-spacing:.16em;gap:10px 22px}.claims li{padding:0}.claims li + li::before{display:none}}
+@media(max-width:600px){.claims{margin-top:36px;font-size:11px;letter-spacing:.16em;gap:10px 22px}.claims li{padding:0}.claims li + li::before{display:none}}
 .table-note{margin:18px auto 0;font-size:13px;color:var(--soft);opacity:.85;text-align:center}
 
 /* ---------------- shop ---------------- */
@@ -306,7 +319,7 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
 .btn-peri:hover{background:transparent;color:#F3ECDE;border-color:#F3ECDE}
 .shop-note{margin:22px auto 0;font-size:14px;color:#F3ECDE;opacity:.72}
 .shop-note a{border-bottom:1px solid rgba(243,236,222,.4)}
-.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,3.5vw,48px);max-width:900px;margin:10px auto 0}
+.shop-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,3.5vw,48px);max-width:900px;margin:10px auto 0}
 .shop-item{display:flex;flex-direction:column;align-items:center}
 .shop-item img{width:min(230px,92%);height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
 .shop-item .btn{margin-top:40px;width:100%;max-width:240px;text-align:center;white-space:nowrap}
@@ -488,8 +501,7 @@ thead th:nth-child(4){color:var(--burg)}
         </article>
       </div>
 
-      <p class="claims-for rv">Classic Salt and Peri Peri</p>
-      <ul class="claims" aria-label="Classic Salt and Peri Peri are">
+      <ul class="claims rv" aria-label="All FLŌR Puffs are">
         <li>Plant-based</li>
         <li>Gluten-free</li>
         <li>Source of fibre</li>
