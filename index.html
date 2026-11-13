@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FLŌR. Water Lily Seed Puffs</title>
-<meta name="description" content="FLŌR is about food, experienced. We discover foods and snacks from different parts of the world and bring them to new tables.">
+<meta name="description" content="FLŌR introduces botanical snacks from different corners of the world. Our first is water lily seed puffs, known as makhana in India.">
 <meta property="og:title" content="FLŌR. Water Lily Seed Puffs">
-<meta property="og:description" content="Food, experienced. Classic Salt, Peri Peri, Cocoa.">
-<meta property="og:image" content="images/pack-peri-peri.png">
+<meta property="og:description" content="Botanical snacks, experienced. Water lily seed puffs in Classic Salt and Peri Peri.">
+<meta property="og:image" content="images/pack-classic-salt-28g.webp">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#FAF6EC">
 <link rel="icon" href="images/lotus-mark.png">
@@ -159,7 +159,7 @@ header.stuck .nav-logo img{width:72px}
    Navy block starts below the nav row so navigation always sits on cream.
    The pouch lives inside that block and is centred by flex, so its size
    comes from the block rather than from viewport units. */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:0 !important}
 .hero-blue{
   position:absolute;top:var(--nav-h);right:0;width:var(--blue-w);bottom:0;
   background:var(--navy-deep);
@@ -172,21 +172,34 @@ header.stuck .nav-logo img{width:72px}
 }
 .hero h1{
   font-family:var(--display);font-weight:300;color:var(--ink);
-  font-size:clamp(44px,7.4vw,104px);line-height:1.02;letter-spacing:-.015em;
+  font-size:clamp(38px,6vw,92px);line-height:1.04;letter-spacing:-.015em;
 }
+.hero h1 .cat{white-space:nowrap}
+.hero-sub{margin-top:26px;font-size:16px;color:var(--body);max-width:40ch}
+.hero-link{
+  display:inline-block;margin-top:22px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:4px;transition:border-color .3s ease,color .3s ease;
+}
+.hero-link:hover{color:var(--navy);border-bottom-color:var(--navy)}
 .hero h1 em{font-style:italic}
 @media(max-width:860px){
+  :root{--nav-h:68px}
   .hero{min-height:auto;flex-direction:column}
-  .hero-in{order:1;padding:calc(var(--nav-h) + 26px) var(--pad) 34px}
+  .hero-in{order:1;padding:calc(var(--nav-h) + 14px) var(--pad) 24px}
+  .hero h1{font-size:clamp(34px,10.4vw,64px)}
+  .hero-sub{margin-top:14px;font-size:15.5px}
+  .hero-link{margin-top:14px}
   .hero-blue{
     order:2;position:relative;top:auto;right:auto;bottom:auto;
-    width:100%;padding:44px var(--pad);
+    width:100%;padding:30px var(--pad);
   }
-  .hero-pack{width:min(230px,58%);max-height:none}
+  .hero-pack{width:min(210px,52%);max-height:none}
+  .nav-logo img{width:74px}
 }
 
 /* ---------------- sections ---------------- */
-section{padding:clamp(80px,11vw,130px) 0;position:relative}
+section{padding:clamp(64px,10vw,124px) 0;position:relative}
+@media(max-width:600px){section{padding:58px 0}.sec-head{margin-bottom:34px !important}}
 .band{background:var(--cream)}
 .sec-head{margin-bottom:52px}
 .sec-head .eyebrow{margin-bottom:16px}
@@ -208,8 +221,10 @@ section{padding:clamp(80px,11vw,130px) 0;position:relative}
 
 /* ---------------- product ---------------- */
 .harvest{width:min(1000px,100%);margin:0 auto 10px;opacity:.9}
-.flavours{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);margin-top:20px}
-@media(max-width:860px){.flavours{grid-template-columns:1fr;max-width:380px;margin-inline:auto}}
+.flavours{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,40px);margin-top:20px;max-width:760px;margin-inline:auto}
+@media(max-width:600px){.flavours{gap:14px}.fl .shot{padding:18px 10px 12px}.fl h3{font-size:20px}.fl .desc{font-size:14.5px}}
+.fl .size{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+.still{font-family:var(--display);font-style:italic;font-size:21px;color:var(--ink);opacity:.8;margin-top:10px}
 .fl{text-align:center}
 .fl .shot{
   background:var(--bg);border-radius:3px;padding:26px 20px 18px;
@@ -217,7 +232,7 @@ section{padding:clamp(80px,11vw,130px) 0;position:relative}
 }
 .band .fl .shot{background:transparent}
 .fl:hover .shot{transform:translateY(-8px)}
-.fl img{margin:0 auto;width:min(230px,80%);filter:drop-shadow(0 26px 30px rgba(82,47,25,.16))}
+.fl img{margin:0 auto;width:min(230px,86%);height:auto;filter:drop-shadow(0 22px 26px rgba(82,47,25,.14))}
 .fl h3{margin-top:22px;font-size:22px}
 .fl .desc{font-size:15.5px;color:var(--soft);margin-top:8px;max-width:30ch;margin-inline:auto}
 .fl .bar{width:34px;height:2px;margin:16px auto 0;border-radius:2px}
@@ -227,7 +242,8 @@ section{padding:clamp(80px,11vw,130px) 0;position:relative}
 
 /* spec table */
 .table-scroll{overflow-x:auto;margin-top:64px;-webkit-overflow-scrolling:touch}
-table{border-collapse:collapse;width:100%;min-width:480px;font-size:15px}
+table{border-collapse:collapse;width:100%;max-width:620px;margin:0 auto;font-size:15px}
+@media(max-width:600px){th,td{padding:13px 8px}thead th{font-size:16px}tbody th{font-size:14px}}
 th,td{padding:15px 14px;text-align:center;border-bottom:1px solid var(--line-soft)}
 thead th{
   font-family:var(--display);font-size:17px;font-weight:400;color:var(--ink);
@@ -240,7 +256,7 @@ tbody th{
 td{color:var(--ink);font-size:16px}
 td.no{color:var(--soft);opacity:.5}
 tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
-.table-note{margin-top:18px;font-size:13px;color:var(--soft);opacity:.85}
+.table-note{margin:18px auto 0;font-size:13px;color:var(--soft);opacity:.85;text-align:center}
 
 /* ---------------- shop ---------------- */
 .shop-shelf{
@@ -251,7 +267,7 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
   width:clamp(96px,20vw,200px);
   filter:drop-shadow(0 30px 34px rgba(82,47,25,.18));
 }
-.shop-shelf img:nth-child(2){width:clamp(112px,23vw,228px)}
+.shop-shelf img{height:auto}
 .badge{
   display:inline-block;margin-top:46px;border:1px solid var(--line);
   border-radius:100px;padding:11px 28px;
@@ -267,6 +283,30 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
   transition:color .3s ease,border-color .3s ease;
 }
 .preorder a:hover{color:var(--terra);border-bottom-color:var(--terra)}
+.shop-ctas{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:44px}
+.btn{
+  display:inline-block;padding:15px 30px;border-radius:100px;
+  font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:400;
+  background:#F3ECDE;color:var(--navy-deep);border:1px solid #F3ECDE;
+  transition:background .3s ease,color .3s ease,border-color .3s ease;
+}
+.btn:hover{background:transparent;color:#F3ECDE}
+.btn-peri{background:var(--terra);border-color:var(--terra);color:#FBF3EA}
+.btn-peri:hover{background:transparent;color:#F3ECDE;border-color:#F3ECDE}
+.shop-note{margin:22px auto 0;font-size:14px;color:#F3ECDE;opacity:.72}
+.shop-note a{border-bottom:1px solid rgba(243,236,222,.4)}
+@media(max-width:600px){.shop-ctas{flex-direction:column;align-items:center}.btn{width:min(280px,100%);text-align:center}}
+
+/* ---------------- coming soon ---------------- */
+.soon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,3vw,40px);max-width:680px;margin:10px auto 0}
+.soon{text-align:center}
+.soon img{width:min(190px,78%);margin:0 auto;height:auto;filter:drop-shadow(0 18px 22px rgba(82,47,25,.12))}
+.soon h3{margin-top:20px;font-size:21px;color:var(--burg)}
+.soon .desc{font-size:15px;color:var(--soft);margin:6px auto 0;max-width:26ch}
+.tag{
+  display:inline-block;margin-top:14px;border:1px solid var(--line);border-radius:100px;
+  padding:7px 16px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);opacity:.75;
+}
 
 /* ---------------- about ---------------- */
 .team-photo{margin-top:46px}
@@ -339,8 +379,8 @@ thead th:nth-child(4){color:var(--burg)}
       <a href="#what">What is <span class="flor">FLŌR</span></a>
       <a href="#puffs">The Puffs</a>
       <a href="#shop">Shop</a>
-      <a href="#sustainability">Sustainability</a>
       <a href="#about">About Us</a>
+      <a href="#next">Coming Soon</a>
     </div>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
       <span></span><span></span><span></span>
@@ -352,8 +392,8 @@ thead th:nth-child(4){color:var(--burg)}
   <a href="#what">What is <span class="flor">FLŌR</span></a>
   <a href="#puffs">The Puffs</a>
   <a href="#shop">Shop</a>
-  <a href="#sustainability">Sustainability</a>
   <a href="#about">About Us</a>
+  <a href="#next">Coming Soon</a>
   <a class="mail" href="mailto:hello@florpuffs.com">hello@florpuffs.com</a>
 </div>
 
@@ -361,154 +401,152 @@ thead th:nth-child(4){color:var(--burg)}
 
 <main id="top">
 
-  <!-- ============ HERO (from the new design) ============ -->
+  <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="hero-blue">
-      <img class="hero-pack" src="images/pack-classic-salt.png" alt="FLŌR Classic Salt water lily seed puffs">
+      <img class="hero-pack" src="images/pack-classic-salt-28g.webp" width="640" height="981" alt="FLŌR Classic Salt water lily seed puffs, 28 g pouch">
     </div>
     <div class="hero-in">
-      <h1>Food,<br><em>experienced.</em></h1>
+      <h1><span class="cat">Botanical snacks,</span><br><em>experienced.</em></h1>
+      <p class="hero-sub">Water lily seed puffs, in Classic Salt and Peri&nbsp;Peri.</p>
+      <a class="hero-link" href="#puffs">Meet the puffs</a>
     </div>
   </section>
 
-  <!-- ============ WHAT IS FLŌR ============ -->
+  <!-- ============ 1. WHAT IS FLŌR ============ -->
   <section id="what" class="band">
     <div class="wrap">
       <div class="sec-head center">
-        <span class="eyebrow">What is <span class="flor">FLŌR</span></span>
+        <span class="eyebrow">What is <span class="flor">FLŌR</span>?</span>
         <img class="orn" src="images/lotus-mark.png" alt="" aria-hidden="true" style="width:46px;margin-bottom:26px">
-        <h2 class="rv"><span class="flor">FLŌR</span> is about<br>food, experienced.</h2>
+        <h2 class="rv">A world of botanical<br>snacks to discover.</h2>
       </div>
       <div class="two">
-        <p class="lead rv">Because food isn't just something to eat. It's something to discover, enjoy and remember.</p>
-        <div class="rv">
-          <p>The taste, the texture, where it comes from, the culture behind it, and the moments it becomes part of. The food we discover while travelling. The things we bring home. The flavours we introduce to someone else. The bowl we put out when the day needs a pause, something to share when friends and family are around, or the quiet ritual of pouring yourself one at the end of a long day.</p>
-          <p>We discover foods and snacks from different parts of the world and bring them to new tables. Sometimes to share, sometimes simply to enjoy ourselves.</p>
-          <p>We start with an ingredient familiar in India but new to many elsewhere: <strong>makhana</strong>, transformed into light, crisp water lily seed puffs.</p>
-        </div>
+        <p class="lead rv">There are so many interesting ingredients and flavours to discover around the world. Some are familiar in one part of the world, yet new to another. We love exploring these food traditions and bringing them a little closer to home.</p>
+        <p class="rv"><span class="flor">FLŌR</span> introduces botanical snacks from different corners of the world. Our first is water lily seed puffs, known as <strong>makhana</strong> in India.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ WATER LILY SEED PUFFS ============ -->
+  <!-- ============ 2. WATER LILY SEED PUFFS ============ -->
   <section id="puffs">
     <div class="wrap">
       <div class="sec-head center">
-        <span class="eyebrow">Water Lily Seed Puffs</span>
-        <h2 class="rv">It starts in still water.</h2>
+        <span class="eyebrow">The product</span>
+        <h2 class="rv">Water lily seed puffs.</h2>
+        <p class="still rv">It starts in still water.</p>
       </div>
-      <img class="harvest rv" src="images/harvest.png" alt="Illustration: a grower harvesting water lily seeds from a pond, the seed pod, and a bowl of finished puffs">
-      <div class="two" style="margin-top:56px">
-        <p class="lead rv">A rather unexpected transformation.</p>
-        <div class="rv">
-          <p>Makhana is the seed of <em>Euryale ferox</em>, a water lily traditionally cultivated in India. The seeds are harvested, dried and roasted until they puff into something light, airy and crisp.</p>
-          <p>Makhana has been eaten in India for generations. We wanted to bring it somewhere new, and let the ingredient speak for itself.</p>
-          <p><strong>Light &amp; crisp.</strong> <span class="flor">FLŌR</span> Puffs are seasoned with the same attention we give everything we make: enough to make them interesting, never so much that you lose the ingredient underneath.</p>
-        </div>
+      <div class="two">
+        <p class="lead rv">Makhana is the seed of the <em>Euryale ferox</em> water lily, traditionally cultivated and enjoyed in India. The seeds are harvested, dried and gently roasted to create the light, crisp puffs at the heart of <span class="flor">FLŌR</span>.</p>
+        <p class="rv">A familiar snack tradition in one part of the world, and a discovery for many snack lovers elsewhere.</p>
       </div>
 
-      <div class="sec-head center" style="margin-bottom:30px">
-        <h2 class="rv" style="font-size:clamp(26px,3.6vw,38px)">Three ways to meet <span class="flor">FLŌR</span></h2>
+      <div class="sec-head center" style="margin:64px 0 30px">
+        <h2 class="rv" style="font-size:clamp(26px,3.6vw,38px)">Current flavours</h2>
       </div>
 
       <div class="flavours">
         <article class="fl fl-salt rv">
-          <div class="shot"><img src="images/pack-classic-salt.png" alt="FLŌR Classic Salt water lily seed puffs, 30 g pouch"></div>
+          <div class="shot"><img src="images/pack-classic-salt-28g.webp" width="640" height="981" loading="lazy" alt="FLŌR Classic Salt water lily seed puffs, 28 g pouch"></div>
           <h3>Classic Salt</h3>
           <p class="desc">Clean, savoury and properly crisp.</p>
+          <span class="size">28 g</span>
           <div class="bar"></div>
         </article>
         <article class="fl fl-peri rv">
-          <div class="shot"><img src="images/pack-peri-peri.png" alt="FLŌR Peri Peri water lily seed puffs, 30 g pouch"></div>
+          <div class="shot"><img src="images/pack-peri-peri-28g.webp" width="640" height="981" loading="lazy" alt="FLŌR Peri Peri water lily seed puffs, 28 g pouch"></div>
           <h3>Peri Peri</h3>
           <p class="desc">A little heat, a little more character.</p>
-          <div class="bar"></div>
-        </article>
-        <article class="fl fl-cocoa rv">
-          <div class="shot"><img src="images/pack-cocoa.png" alt="FLŌR Cocoa water lily seed puffs, 30 g pouch"></div>
-          <h3>Cocoa</h3>
-          <p class="desc">Deep cocoa notes, for an indulgent bite.</p>
+          <span class="size">28 g</span>
           <div class="bar"></div>
         </article>
       </div>
 
       <div class="table-scroll rv">
+        <span class="eyebrow" style="text-align:center;margin-bottom:16px">At a glance</span>
         <table>
-          <caption class="eyebrow" style="text-align:left;margin-bottom:16px">At a glance</caption>
           <thead>
             <tr>
               <th scope="col" style="text-align:left"></th>
               <th scope="col">Classic Salt</th>
               <th scope="col">Peri Peri</th>
-              <th scope="col">Cocoa</th>
             </tr>
           </thead>
           <tbody>
-            <tr><th scope="row">Vegetarian</th><td>✓</td><td>✓</td><td>✓</td></tr>
-            <tr><th scope="row">Vegan</th><td>✓</td><td>✓</td><td class="no">No</td></tr>
-            <tr><th scope="row">Gluten-free</th><td>✓</td><td>✓</td><td>✓</td></tr>
-            <tr><th scope="row">Source of fibre</th><td>✓</td><td>✓</td><td>✓</td></tr>
-            <tr><th scope="row">High in fibre</th><td>✓</td><td>✓</td><td class="no">No</td></tr>
+            <tr><th scope="row">A source of fibre</th><td>✓</td><td>✓</td></tr>
+            <tr><th scope="row">Pouch</th><td>28 g</td><td>28 g</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="table-note rv">30 g and 11 g pouches. Crisp by craft.</p>
+      <p class="table-note rv">Crisp by craft.</p>
     </div>
   </section>
 
-  <!-- ============ SHOP ============ -->
-  <section id="shop" class="band">
+  <!-- ============ 3. SHOP ============ -->
+  <section id="shop">
     <div class="wrap center">
       <div class="sec-head">
-        <span class="eyebrow">The Shop</span>
-        <h2 class="rv">Available soon.</h2>
+        <span class="eyebrow">Find your <span class="flor">FLŌR</span></span>
+        <h2 class="rv">Ready to try<br>botanical snacking?</h2>
       </div>
       <div class="shop-shelf rv">
-        <img src="images/pack-classic-salt.png" alt="FLŌR Classic Salt">
-        <img src="images/pack-peri-peri.png" alt="FLŌR Peri Peri">
-        <img src="images/pack-cocoa.png" alt="FLŌR Cocoa">
+        <img src="images/pack-classic-salt-28g.webp" width="640" height="981" loading="lazy" alt="FLŌR Classic Salt, 28 g">
+        <img src="images/pack-peri-peri-28g.webp" width="640" height="981" loading="lazy" alt="FLŌR Peri Peri, 28 g">
       </div>
       <div class="rv">
-        <span class="badge">30 g &amp; 11 g pouches</span>
-        <p class="preorder">
-          Pre-order the Discovery Box by writing to
-          <a href="mailto:hello@florpuffs.com?subject=Discovery%20Box%20pre-order">hello@florpuffs.com</a>
-        </p>
+        <div class="shop-ctas">
+          <a class="btn" href="mailto:hello@florpuffs.com?subject=Order%3A%20FL%C5%8CR%20Classic%20Salt">Shop Classic Salt</a>
+          <a class="btn btn-peri" href="mailto:hello@florpuffs.com?subject=Order%3A%20FL%C5%8CR%20Peri%20Peri">Shop Peri Peri</a>
+        </div>
+        <p class="shop-note">For now, orders go through <a href="mailto:hello@florpuffs.com">hello@florpuffs.com</a></p>
       </div>
     </div>
   </section>
 
-  <!-- ============ SUSTAINABILITY ============ -->
-  <section id="sustainability">
-    <div class="wrap">
-      <div class="sec-head center">
-        <span class="eyebrow">Sustainability</span>
-        <h2 class="rv">Not a box to tick.</h2>
-      </div>
-      <div class="two">
-        <p class="rv">Sustainability isn't something we're adding to <span class="flor">FLŌR</span> because we're supposed to. It's a must-have for us. Our makhana is sourced through a trader today, and we're exploring ways to source more directly and pay farmers a meaningful premium. Our pouch isn't perfect either. Protecting crispness means a multi-layer pack, and our ambition is a mono-material, recyclable one. We're still at the beginning, and honest about what we haven't figured out yet.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ABOUT ============ -->
+  <!-- ============ 4. ABOUT ============ -->
   <section id="about" class="band">
     <div class="wrap">
       <div class="sec-head center">
-        <span class="eyebrow">About Us</span>
-        <h2 class="rv">Two founders.<br>One shared curiosity.</h2>
+        <span class="eyebrow">About us</span>
+        <h2 class="rv">A little about us.</h2>
       </div>
 
       <div class="two">
         <p class="lead rv">We are Shourya and Nienke, based in Amsterdam.</p>
         <div class="rv">
-          <p>Between us, we have spent almost two decades in consumer goods and the flower business, industries where sourcing, quality, packaging and presentation matter, and where a good product still has to make its way from producer to consumer.</p>
-          <p>We have travelled a lot, lived around different cultures and, like most people who are curious about the world, tend to come home with things we've eaten rather than things we've bought.</p>
+          <p>Between us, we have spent almost two decades in consumer goods and the retail flower business, industries where quality, packaging and storytelling matter.</p>
+          <p>We have travelled, lived around different cultures and, like many curious people, tend to come home with things we have eaten. Especially snacks.</p>
+          <p><span class="flor">FLŌR</span> grew from that curiosity: discovering ingredients and food traditions that deserve to be shared more widely.</p>
         </div>
       </div>
 
       <div class="team-photo rv">
-        <img src="images/founders.png" alt="Shourya and Nienke, the founders of FLŌR">
+        <img src="images/founders.png" loading="lazy" alt="Shourya and Nienke, the founders of FLŌR">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. COMING SOON ============ -->
+  <section id="next">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">What's coming soon</span>
+        <h2 class="rv">There's more to discover.</h2>
+        <p class="rv" style="margin-top:18px">We're exploring new flavours and botanical snacks. Here's a first look at what's next.</p>
+      </div>
+      <div class="soon-grid">
+        <article class="soon rv">
+          <img src="images/pack-cocoa-coming-soon.webp" width="640" height="981" loading="lazy" alt="FLŌR Cocoa, coming soon">
+          <h3>Cocoa</h3>
+          <p class="desc">A new flavour of <span class="flor">FLŌR</span> Puffs is on its way.</p>
+          <span class="tag">Coming soon</span>
+        </article>
+        <article class="soon rv">
+          <img src="images/pack-amaranth-coming-soon.webp" width="640" height="981" loading="lazy" alt="FLŌR Amaranth Bites, coming soon">
+          <h3>Amaranth Bites</h3>
+          <p class="desc">A new botanical snack, coming soon.</p>
+          <span class="tag">Coming soon</span>
+        </article>
       </div>
     </div>
   </section>
@@ -518,13 +556,13 @@ thead th:nth-child(4){color:var(--burg)}
 <footer>
   <div class="wrap">
     <img class="flogo" src="images/logo.png" alt="FLŌR">
-    <p class="foot-tag">Food, experienced.</p>
+    <p class="foot-tag">Botanical snacks, experienced.</p>
     <div class="foot-links">
       <a href="#what">What is <span class="flor">FLŌR</span></a>
       <a href="#puffs">The Puffs</a>
       <a href="#shop">Shop</a>
-      <a href="#sustainability">Sustainability</a>
       <a href="#about">About Us</a>
+      <a href="#next">Coming Soon</a>
       <a href="mailto:hello@florpuffs.com">hello@florpuffs.com</a>
     </div>
     <p class="foot-legal">© <span id="yr">2026</span> <span class="flor">FLŌR</span> · Amsterdam, The Netherlands</p>
