@@ -304,7 +304,13 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
 .btn-peri:hover{background:transparent;color:#F3ECDE;border-color:#F3ECDE}
 .shop-note{margin:22px auto 0;font-size:14px;color:#F3ECDE;opacity:.72}
 .shop-note a{border-bottom:1px solid rgba(243,236,222,.4)}
-@media(max-width:600px){.shop-ctas{flex-direction:column;align-items:center}.btn{width:min(280px,100%);text-align:center}}
+.shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,4vw,56px);max-width:640px;margin:10px auto 0}
+.shop-item{display:flex;flex-direction:column;align-items:center}
+.shop-item img{width:min(230px,92%);height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
+.shop-item .btn{margin-top:40px;width:100%;max-width:250px;text-align:center;white-space:nowrap}
+@media(max-width:600px){
+  .shop-item .btn{margin-top:26px;padding:14px 6px;font-size:10.5px;letter-spacing:.12em}
+}
 
 /* ---------------- coming soon ---------------- */
 .soon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,3vw,40px);max-width:680px;margin:10px auto 0}
@@ -476,7 +482,6 @@ thead th:nth-child(4){color:var(--burg)}
         <li>Gluten-free</li>
         <li>Source of fibre</li>
       </ul>
-      <p class="table-note rv">Crisp by craft.</p>
     </div>
   </section>
 
@@ -487,15 +492,17 @@ thead th:nth-child(4){color:var(--burg)}
         <span class="eyebrow">Find your <span class="flor">FLŌR</span></span>
         <h2 class="rv">Ready to try<br>botanical snacking?</h2>
       </div>
-      <div class="shop-shelf rv">
-        <img src="images/pack-classic-salt-28g.webp" width="640" height="981" loading="lazy" alt="FLŌR Classic Salt, 28 g">
-        <img src="images/pack-peri-peri-28g.webp" width="640" height="981" loading="lazy" alt="FLŌR Peri Peri, 28 g">
-      </div>
-      <div class="rv">
-        <div class="shop-ctas">
+      <div class="shop-grid rv">
+        <div class="shop-item">
+          <img src="images/pack-classic-salt-28g.webp" width="640" height="981" loading="lazy" alt="FLŌR Classic Salt, 28 g">
           <a class="btn" href="mailto:hello@florpuffs.com?subject=Order%3A%20FL%C5%8CR%20Classic%20Salt">Shop Classic Salt</a>
+        </div>
+        <div class="shop-item">
+          <img src="images/pack-peri-peri-28g.webp" width="640" height="981" loading="lazy" alt="FLŌR Peri Peri, 28 g">
           <a class="btn btn-peri" href="mailto:hello@florpuffs.com?subject=Order%3A%20FL%C5%8CR%20Peri%20Peri">Shop Peri Peri</a>
         </div>
+      </div>
+      <div class="rv">
         <p class="shop-note">For now, orders go through <a href="mailto:hello@florpuffs.com">hello@florpuffs.com</a></p>
       </div>
     </div>
