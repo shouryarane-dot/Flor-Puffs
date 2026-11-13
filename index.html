@@ -221,8 +221,10 @@ section{padding:clamp(64px,10vw,124px) 0;position:relative}
 
 /* ---------------- product ---------------- */
 .harvest{width:min(1000px,100%);margin:0 auto 10px;opacity:.9}
-.flavours{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,40px);margin-top:20px;max-width:760px;margin-inline:auto}
-@media(max-width:600px){.flavours{gap:14px}.fl .shot{padding:18px 10px 12px}.fl h3{font-size:20px}.fl .desc{font-size:14.5px}}
+.flavours{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,3vw,40px);margin-top:20px;max-width:1000px;margin-inline:auto}
+@media(max-width:600px){.flavours{gap:10px}.fl .shot{padding:14px 6px 10px}.fl h3{font-size:18px;margin-top:16px}.fl .desc{font-size:13px;line-height:1.55}.fl .size{font-size:10.5px;letter-spacing:.12em}}
+.fl .soon-tag{color:var(--burg);white-space:nowrap}
+.claims-for{margin:48px auto 0;text-align:center;font-family:var(--display);font-style:italic;font-size:18px;color:var(--soft)}
 .fl .size{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
 .still{font-family:var(--display);font-style:italic;font-size:21px;color:var(--ink);opacity:.8;margin-top:10px}
 .fl{text-align:center}
@@ -258,13 +260,13 @@ td.no{color:var(--soft);opacity:.5}
 tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
 .claims{
   list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:10px 0;
-  margin:48px auto 0;padding:22px 0;max-width:620px;
+  margin:14px auto 0;padding:22px 0;max-width:620px;
   border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
   font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);
 }
 .claims li{padding:0 20px;position:relative}
 .claims li + li::before{content:'';position:absolute;left:-2px;top:50%;width:4px;height:4px;margin-top:-2px;border-radius:50%;background:var(--terra);opacity:.7}
-@media(max-width:600px){.claims{margin-top:36px;font-size:11px;letter-spacing:.16em;gap:10px 22px}.claims li{padding:0}.claims li + li::before{display:none}}
+@media(max-width:600px){.claims-for{margin-top:36px}.claims{margin-top:12px;font-size:11px;letter-spacing:.16em;gap:10px 22px}.claims li{padding:0}.claims li + li::before{display:none}}
 .table-note{margin:18px auto 0;font-size:13px;color:var(--soft);opacity:.85;text-align:center}
 
 /* ---------------- shop ---------------- */
@@ -304,16 +306,18 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
 .btn-peri:hover{background:transparent;color:#F3ECDE;border-color:#F3ECDE}
 .shop-note{margin:22px auto 0;font-size:14px;color:#F3ECDE;opacity:.72}
 .shop-note a{border-bottom:1px solid rgba(243,236,222,.4)}
-.shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,4vw,56px);max-width:640px;margin:10px auto 0}
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,3.5vw,48px);max-width:900px;margin:10px auto 0}
 .shop-item{display:flex;flex-direction:column;align-items:center}
 .shop-item img{width:min(230px,92%);height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
-.shop-item .btn{margin-top:40px;width:100%;max-width:250px;text-align:center;white-space:nowrap}
+.shop-item .btn{margin-top:40px;width:100%;max-width:240px;text-align:center;white-space:nowrap}
+.btn-soon{background:transparent;color:#F3ECDE;border-color:rgba(243,236,222,.35);cursor:default;opacity:.8}
+.btn-soon:hover{background:transparent;color:#F3ECDE}
 @media(max-width:600px){
-  .shop-item .btn{margin-top:26px;padding:14px 6px;font-size:10.5px;letter-spacing:.12em}
+  .shop-item .btn{margin-top:22px;padding:11px 4px;font-size:9.5px;letter-spacing:.1em;white-space:normal;line-height:1.5;min-height:48px;display:flex;align-items:center;justify-content:center;border-radius:26px}
 }
 
 /* ---------------- coming soon ---------------- */
-.soon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,3vw,40px);max-width:680px;margin:10px auto 0}
+.soon-grid{display:grid;grid-template-columns:1fr;max-width:320px;margin:10px auto 0}
 .soon{text-align:center}
 .soon img{width:min(190px,78%);margin:0 auto;height:auto;filter:drop-shadow(0 18px 22px rgba(82,47,25,.12))}
 .soon h3{margin-top:20px;font-size:21px;color:var(--burg)}
@@ -457,7 +461,7 @@ thead th:nth-child(4){color:var(--burg)}
       </div>
 
       <div class="sec-head center" style="margin:64px 0 30px">
-        <h2 class="rv" style="font-size:clamp(26px,3.6vw,38px)">Current flavours</h2>
+        <h2 class="rv" style="font-size:clamp(26px,3.6vw,38px)">The flavours</h2>
       </div>
 
       <div class="flavours">
@@ -475,9 +479,17 @@ thead th:nth-child(4){color:var(--burg)}
           <span class="size">28 g</span>
           <div class="bar"></div>
         </article>
+        <article class="fl fl-cocoa rv">
+          <div class="shot"><img src="images/pack-cocoa-coming-soon.webp" width="640" height="981" loading="lazy" alt="FLŌR Cocoa water lily seed puffs, coming soon"></div>
+          <h3>Cocoa</h3>
+          <p class="desc">A new flavour, on its way.</p>
+          <span class="size soon-tag">Coming soon</span>
+          <div class="bar"></div>
+        </article>
       </div>
 
-      <ul class="claims rv" aria-label="Both flavours are">
+      <p class="claims-for rv">Classic Salt and Peri Peri</p>
+      <ul class="claims" aria-label="Classic Salt and Peri Peri are">
         <li>Plant-based</li>
         <li>Gluten-free</li>
         <li>Source of fibre</li>
@@ -500,6 +512,10 @@ thead th:nth-child(4){color:var(--burg)}
         <div class="shop-item">
           <img src="images/pack-peri-peri-28g.webp" width="640" height="981" loading="lazy" alt="FLŌR Peri Peri, 28 g">
           <a class="btn btn-peri" href="mailto:hello@florpuffs.com?subject=Order%3A%20FL%C5%8CR%20Peri%20Peri">Shop Peri Peri</a>
+        </div>
+        <div class="shop-item">
+          <img src="images/pack-cocoa-coming-soon.webp" width="640" height="981" loading="lazy" alt="FLŌR Cocoa, coming soon">
+          <span class="btn btn-soon" aria-disabled="true">Coming soon</span>
         </div>
       </div>
       <div class="rv">
@@ -540,12 +556,6 @@ thead th:nth-child(4){color:var(--burg)}
         <p class="rv" style="margin-top:18px">We're exploring new flavours and botanical snacks. Here's a first look at what's next.</p>
       </div>
       <div class="soon-grid">
-        <article class="soon rv">
-          <img src="images/pack-cocoa-coming-soon.webp" width="640" height="981" loading="lazy" alt="FLŌR Cocoa, coming soon">
-          <h3>Cocoa</h3>
-          <p class="desc">A new flavour of <span class="flor">FLŌR</span> Puffs is on its way.</p>
-          <span class="tag">Coming soon</span>
-        </article>
         <article class="soon rv">
           <img src="images/pack-amaranth-coming-soon.webp" width="640" height="981" loading="lazy" alt="FLŌR Amaranth Bites, coming soon">
           <h3>Amaranth Bites</h3>
